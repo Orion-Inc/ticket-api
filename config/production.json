@@ -1,0 +1,41 @@
+{
+    "settings": {
+        "diplayErrorDetails": true,
+        "logger": {
+            "name": "Ticket",
+            "level": "Monolog\\ Logger::DEBUG",
+            "path": "__DIR__ . '/../logs/app.log'"
+        },
+        "db": {
+            "driver": "mysql",
+            "host": "localhost",
+            "database": "",
+            "username": "",
+            "password": "",
+            "charset": "utf8",
+            "collation": "utf8_unicode_ci",
+            "prefix": "tkt_"
+        },
+        "mail": {
+            "host": "",
+            "username": "",
+            "password": "",
+            "port": 587,
+            "html": true,
+            "mailgun-api": "",
+            "mailgun-domain": ""
+        },
+        "sms": {
+            "username": "",
+            "password": ""
+        }
+    },
+    "app": {
+        "name": "Ticket",
+        "url": ""
+    },
+    "twig": {
+        "debug": true
+    }
+
+}
