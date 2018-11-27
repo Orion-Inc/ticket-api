@@ -11,18 +11,20 @@
             });
 
             $this->group('/user', function() {
-                $this->get('/', 'VersionController:index')->setName('api.v1.user-getAll');
+                $this->get('/all', 'VersionController:index')->setName('api.v1.user-getAll');
                 $this->post('/new', 'VersionController:index')->setName('api.v1.user-new');
                 
                 $this->get('/{id}', 'VersionController:index')->setName('api.v1.user-getThis');
                 $this->group('/{id}', function() {
+                    $this->get('/history', 'VersionController:index')->setName('api.v1.user-history');
+
                     $this->post('/save', 'VersionController:index')->setName('api.v1.user-save');
                     $this->post('/delete', 'VersionController:index')->setName('api.v1.user-delete');
                 });
             });
 
             $this->group('/event', function() {
-                $this->get('/', 'VersionController:index')->setName('api.v1.event-getAll');
+                $this->get('/all', 'VersionController:index')->setName('api.v1.event-getAll');
                 $this->post('/create', 'VersionController:index')->setName('api.v1.event-new');
     
                 $this->get('/{id}', 'VersionController:index')->setName('api.v1.event-getThis');
