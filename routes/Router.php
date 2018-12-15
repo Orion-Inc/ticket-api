@@ -11,10 +11,10 @@
             });
 
             $this->group('/user', function() {
-                $this->get('/all', 'VersionController:index')->setName('api.v1.user-getAll');
-                $this->post('/new', 'VersionController:index')->setName('api.v1.user-new');
+                $this->get('/all', 'UsersController:all_users')->setName('api.v1.user-getAll');
+                $this->post('/new', 'UsersController:new_user')->setName('api.v1.user-new');
                 
-                $this->get('/{id}', 'VersionController:index')->setName('api.v1.user-getThis');
+                $this->get('/{id}', 'UsersController:get_user')->setName('api.v1.user-getThis');
                 $this->group('/{id}', function() {
                     $this->get('/history', 'VersionController:index')->setName('api.v1.user-history');
 
@@ -41,7 +41,5 @@
     
                 
             });
-
-            
         });
     });

@@ -18,6 +18,8 @@
 
     $container = $app->getContainer();
 
+    $v = $container->get('app')['api-version'];
+
     $settings = $container->get('settings')['logger'];
     $db_conn = $container->get('settings')['db'];
     $app_config = $container->get('app');
@@ -45,7 +47,6 @@
 
         $view->getEnvironment()->addGlobal('app', $app_config);
 
-
         return $view;
     };
 
@@ -53,12 +54,13 @@
         $logger = new \Monolog\Logger($settings['name']);
         $file_handler = new \Monolog\Handler\StreamHandler($settings['path']);
         $logger->pushHandler($file_handler);
+
         return $logger;
     };
 
-    // $container['validator'] = function ($container){
-    //     return new \Ticket\Classes\Validation\Validator;
-    // };
+    $container['validator'] = function ($container){
+        return new \Ticket\Classes\Validation\Validator;
+    };
 
     $container['randomlib'] = function ($container){
         $factory = new \RandomLib\Factory;
@@ -70,8 +72,22 @@
         return new \Ticket\Classes\Config($container);
     };
 
+    $container['api_response'] = function ($container){
+        return new \Ticket\Classes\Responses\Responses($container);
+    };
+
+    $container['user'] = function ($container){
+        return new \Ticket\Classes\User\User($container);
+    };
+
     $container['VersionController'] = function ($container){
         return new \Ticket\Controllers\v1\VersionController($container);
     };
+
+    $container['UsersController'] = function ($container){
+        return new \Ticket\Controllers\v1\UsersController($container);
+    };
+
+    v::with('Ticket\\Classes\\Validation\\Rules\\');
 
     require __DIR__.'/../routes/Router.php';

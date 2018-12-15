@@ -9,13 +9,14 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
     public static $files = array (
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
+        '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'ddc0a4d7e61c0286f0f8593b1903e894' => __DIR__ . '/..' . '/clue/stream-filter/src/functions.php',
         '8cff32064859f4559445b89279f3199c' => __DIR__ . '/..' . '/php-http/message/src/filters.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
-        '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
         'e91d0dc994644828154ae2387ede1ca8' => __DIR__ . '/..' . '/spatie/string/src/string_functions.php',
     );
@@ -60,6 +61,9 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'T' => 
         array (
             'Twig\\' => 5,
+            'Tuupola\\Middleware\\' => 19,
+            'Tuupola\\Http\\Factory\\' => 21,
+            'Tuupola\\' => 8,
             'Ticket\\' => 7,
         ),
         'S' => 
@@ -70,6 +74,7 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
             'Symfony\\Component\\OptionsResolver\\' => 34,
             'Spatie\\String\\' => 14,
             'Slim\\Views\\' => 11,
+            'Slim\\Middleware\\' => 16,
             'Slim\\Flash\\' => 11,
             'Slim\\Csrf\\' => 10,
             'Slim\\' => 5,
@@ -99,6 +104,8 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         ),
         'I' => 
         array (
+            'Interop\\Http\\ServerMiddleware\\' => 30,
+            'Interop\\Http\\Factory\\' => 21,
             'Interop\\Container\\' => 18,
             'Illuminate\\Support\\' => 19,
             'Illuminate\\Database\\' => 20,
@@ -123,11 +130,16 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         ),
         'F' => 
         array (
+            'Firebase\\JWT\\' => 13,
             'FastRoute\\' => 10,
         ),
         'C' => 
         array (
             'Clue\\StreamFilter\\' => 18,
+        ),
+        'B' => 
+        array (
+            'Branca\\' => 7,
         ),
     );
 
@@ -245,6 +257,18 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
+        'Tuupola\\Middleware\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tuupola/branca-middleware/src',
+        ),
+        'Tuupola\\Http\\Factory\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tuupola/http-factory/src',
+        ),
+        'Tuupola\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tuupola/base62/src',
+        ),
         'Ticket\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -272,6 +296,10 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'Slim\\Views\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/twig-view/src',
+        ),
+        'Slim\\Middleware\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tuupola/slim-jwt-auth/src',
         ),
         'Slim\\Flash\\' => 
         array (
@@ -316,6 +344,14 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'Lcobucci\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
+        ),
+        'Interop\\Http\\ServerMiddleware\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/http-interop/http-middleware/src',
+        ),
+        'Interop\\Http\\Factory\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/http-interop/http-factory/src',
         ),
         'Interop\\Container\\' => 
         array (
@@ -378,6 +414,10 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
@@ -385,6 +425,10 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'Clue\\StreamFilter\\' => 
         array (
             0 => __DIR__ . '/..' . '/clue/stream-filter/src',
+        ),
+        'Branca\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tuupola/branca/src',
         ),
     );
 
@@ -449,6 +493,7 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
     );
 
     public static $classMap = array (
+        'Branca\\Branca' => __DIR__ . '/..' . '/tuupola/branca/src/Branca.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\CarbonPeriod' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonPeriod.php',
@@ -474,6 +519,10 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'FastRoute\\RouteCollector' => __DIR__ . '/..' . '/nikic/fast-route/src/RouteCollector.php',
         'FastRoute\\RouteParser' => __DIR__ . '/..' . '/nikic/fast-route/src/RouteParser.php',
         'FastRoute\\RouteParser\\Std' => __DIR__ . '/..' . '/nikic/fast-route/src/RouteParser/Std.php',
+        'Firebase\\JWT\\BeforeValidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/BeforeValidException.php',
+        'Firebase\\JWT\\ExpiredException' => __DIR__ . '/..' . '/firebase/php-jwt/src/ExpiredException.php',
+        'Firebase\\JWT\\JWT' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWT.php',
+        'Firebase\\JWT\\SignatureInvalidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/SignatureInvalidException.php',
         'GuzzleHttp\\Client' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Client.php',
         'GuzzleHttp\\ClientInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/ClientInterface.php',
         'GuzzleHttp\\Cookie\\CookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/CookieJar.php',
@@ -928,6 +977,14 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'Interop\\Container\\ContainerInterface' => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container/ContainerInterface.php',
         'Interop\\Container\\Exception\\ContainerException' => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container/Exception/ContainerException.php',
         'Interop\\Container\\Exception\\NotFoundException' => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container/Exception/NotFoundException.php',
+        'Interop\\Http\\Factory\\RequestFactoryInterface' => __DIR__ . '/..' . '/http-interop/http-factory/src/RequestFactoryInterface.php',
+        'Interop\\Http\\Factory\\ResponseFactoryInterface' => __DIR__ . '/..' . '/http-interop/http-factory/src/ResponseFactoryInterface.php',
+        'Interop\\Http\\Factory\\ServerRequestFactoryInterface' => __DIR__ . '/..' . '/http-interop/http-factory/src/ServerRequestFactoryInterface.php',
+        'Interop\\Http\\Factory\\StreamFactoryInterface' => __DIR__ . '/..' . '/http-interop/http-factory/src/StreamFactoryInterface.php',
+        'Interop\\Http\\Factory\\UploadedFileFactoryInterface' => __DIR__ . '/..' . '/http-interop/http-factory/src/UploadedFileFactoryInterface.php',
+        'Interop\\Http\\Factory\\UriFactoryInterface' => __DIR__ . '/..' . '/http-interop/http-factory/src/UriFactoryInterface.php',
+        'Interop\\Http\\ServerMiddleware\\DelegateInterface' => __DIR__ . '/..' . '/http-interop/http-middleware/src/DelegateInterface.php',
+        'Interop\\Http\\ServerMiddleware\\MiddlewareInterface' => __DIR__ . '/..' . '/http-interop/http-middleware/src/MiddlewareInterface.php',
         'JsonMapper' => __DIR__ . '/..' . '/netresearch/jsonmapper/src/JsonMapper.php',
         'JsonMapper_Exception' => __DIR__ . '/..' . '/netresearch/jsonmapper/src/JsonMapper/Exception.php',
         'JsonSerializable' => __DIR__ . '/..' . '/nesbot/carbon/src/JsonSerializable.php',
@@ -2103,6 +2160,10 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'Slim\\Interfaces\\RouteInterface' => __DIR__ . '/..' . '/slim/slim/Slim/Interfaces/RouteInterface.php',
         'Slim\\Interfaces\\RouterInterface' => __DIR__ . '/..' . '/slim/slim/Slim/Interfaces/RouterInterface.php',
         'Slim\\MiddlewareAwareTrait' => __DIR__ . '/..' . '/slim/slim/Slim/MiddlewareAwareTrait.php',
+        'Slim\\Middleware\\JwtAuthentication' => __DIR__ . '/..' . '/tuupola/slim-jwt-auth/src/JwtAuthentication.php',
+        'Slim\\Middleware\\JwtAuthentication\\RequestMethodRule' => __DIR__ . '/..' . '/tuupola/slim-jwt-auth/src/JwtAuthentication/RequestMethodRule.php',
+        'Slim\\Middleware\\JwtAuthentication\\RequestPathRule' => __DIR__ . '/..' . '/tuupola/slim-jwt-auth/src/JwtAuthentication/RequestPathRule.php',
+        'Slim\\Middleware\\JwtAuthentication\\RuleInterface' => __DIR__ . '/..' . '/tuupola/slim-jwt-auth/src/JwtAuthentication/RuleInterface.php',
         'Slim\\Routable' => __DIR__ . '/..' . '/slim/slim/Slim/Routable.php',
         'Slim\\Route' => __DIR__ . '/..' . '/slim/slim/Slim/Route.php',
         'Slim\\RouteGroup' => __DIR__ . '/..' . '/slim/slim/Slim/RouteGroup.php',
@@ -2197,7 +2258,24 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'Ticket\\Classes\\App' => __DIR__ . '/../..' . '/app/Classes/App.php',
         'Ticket\\Classes\\Config' => __DIR__ . '/../..' . '/app/Classes/Config.php',
         'Ticket\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Contoller.php',
-        'Ticket\\Controllers\\VersionController' => __DIR__ . '/../..' . '/app/Controllers/v1/VersionController.php',
+        'Ticket\\Controllers\\v1\\VersionController' => __DIR__ . '/../..' . '/app/Controllers/v1/VersionController.php',
+        'Tuupola\\Base62' => __DIR__ . '/..' . '/tuupola/base62/src/Base62.php',
+        'Tuupola\\Base62Proxy' => __DIR__ . '/..' . '/tuupola/base62/src/Base62Proxy.php',
+        'Tuupola\\Base62\\BaseEncoder' => __DIR__ . '/..' . '/tuupola/base62/src/Base62/BaseEncoder.php',
+        'Tuupola\\Base62\\BcmathEncoder' => __DIR__ . '/..' . '/tuupola/base62/src/Base62/BcmathEncoder.php',
+        'Tuupola\\Base62\\GmpEncoder' => __DIR__ . '/..' . '/tuupola/base62/src/Base62/GmpEncoder.php',
+        'Tuupola\\Base62\\PhpEncoder' => __DIR__ . '/..' . '/tuupola/base62/src/Base62/PhpEncoder.php',
+        'Tuupola\\Http\\Factory\\RequestFactory' => __DIR__ . '/..' . '/tuupola/http-factory/src/RequestFactory.php',
+        'Tuupola\\Http\\Factory\\ResponseFactory' => __DIR__ . '/..' . '/tuupola/http-factory/src/ResponseFactory.php',
+        'Tuupola\\Http\\Factory\\ServerRequestFactory' => __DIR__ . '/..' . '/tuupola/http-factory/src/ServerRequestFactory.php',
+        'Tuupola\\Http\\Factory\\StreamFactory' => __DIR__ . '/..' . '/tuupola/http-factory/src/StreamFactory.php',
+        'Tuupola\\Http\\Factory\\UploadedFileFactory' => __DIR__ . '/..' . '/tuupola/http-factory/src/UploadedFileFactory.php',
+        'Tuupola\\Http\\Factory\\UriFactory' => __DIR__ . '/..' . '/tuupola/http-factory/src/UriFactory.php',
+        'Tuupola\\Middleware\\BrancaAuthentication' => __DIR__ . '/..' . '/tuupola/branca-middleware/src/BrancaAuthentication.php',
+        'Tuupola\\Middleware\\BrancaAuthentication\\CallableDelegate' => __DIR__ . '/..' . '/tuupola/branca-middleware/src/BrancaAuthentication/CallableDelegate.php',
+        'Tuupola\\Middleware\\BrancaAuthentication\\RequestMethodRule' => __DIR__ . '/..' . '/tuupola/branca-middleware/src/BrancaAuthentication/RequestMethodRule.php',
+        'Tuupola\\Middleware\\BrancaAuthentication\\RequestPathRule' => __DIR__ . '/..' . '/tuupola/branca-middleware/src/BrancaAuthentication/RequestPathRule.php',
+        'Tuupola\\Middleware\\BrancaAuthentication\\RuleInterface' => __DIR__ . '/..' . '/tuupola/branca-middleware/src/BrancaAuthentication/RuleInterface.php',
         'Twig\\Cache\\CacheInterface' => __DIR__ . '/..' . '/twig/twig/src/Cache/CacheInterface.php',
         'Twig\\Cache\\FilesystemCache' => __DIR__ . '/..' . '/twig/twig/src/Cache/FilesystemCache.php',
         'Twig\\Cache\\NullCache' => __DIR__ . '/..' . '/twig/twig/src/Cache/NullCache.php',

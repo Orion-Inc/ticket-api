@@ -8,13 +8,17 @@
         },
         "db": {
             "driver": "mysql",
-            "host": "localhost",
-            "database": "",
-            "username": "",
-            "password": "",
+            "host": "db4free.net",
+            "port": "3306",
+            "database": "ft_tickets",
+            "username": "faridibin",
+            "password": "hamzazara",
             "charset": "utf8",
             "collation": "utf8_unicode_ci",
             "prefix": "tkt_"
+        },
+        "jwt": {
+            "secret": ""
         },
         "mail": {
             "host": "",
