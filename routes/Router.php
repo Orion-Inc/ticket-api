@@ -16,7 +16,7 @@
                 
                 $this->get('/{id}', 'UsersController:get_user')->setName('api.v1.user-getThis');
                 $this->group('/{id}', function() {
-                    $this->get('/history', 'VersionController:index')->setName('api.v1.user-history');
+                    $this->get('/history', 'UsersController:user_history')->setName('api.v1.user-history');
 
                     $this->post('/save', 'UsersController:update_user')->setName('api.v1.user-save');
                     $this->post('/delete', 'UsersController:delete_user')->setName('api.v1.user-delete');

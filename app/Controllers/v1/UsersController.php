@@ -25,7 +25,7 @@
                 'password' => v::notEmpty(),
                 'type' => v::notEmpty()->in(['administrator','organizer','customer']),
                 'full_name' => v::notEmpty()->alpha(),
-                'phone' => v::notEmpty()->phone(),
+                'phone' => v::notEmpty()->phone()->phoneAvailable(),
                 'event_organizer' => v::optional(v::oneOf(
                     v::intVal(),
                     v::nullType()
@@ -62,13 +62,14 @@
         public function update_user($request, $response, $args)
         {
             $user_email = $this->user->get($args['id'])[0]['email'];
+            $user_phone = $this->user->get($args['id'])[0]['phone'];
 
             $validation = $this->validator->validate($request, [
                 'email' => ($request->getParam('email') == $user_email) ? v::noWhitespace()->notEmpty()->email() : v::noWhitespace()->notEmpty()->email()->emailAvailable(),
                 'password' => v::notEmpty(),
                 'type' => v::notEmpty()->in(['administrator','organizer','customer']),
                 'full_name' => v::notEmpty()->alpha(),
-                'phone' => v::notEmpty()->phone(),
+                'phone' => ($request->getParam('phone') == $user_phone) ? v::notEmpty()->phone() : v::notEmpty()->phone()->phoneAvailable(),
                 'event_organizer' => v::optional(v::oneOf(
                     v::intVal(),
                     v::nullType()
@@ -97,6 +98,17 @@
 
             if ($user) {
                 return $response->withJson($this->api_response->success([], 'User deleted successfully.'));
+            }
+
+            return $response->withJson($this->api_response->error());
+        }
+
+        public function user_history($request, $response, $args)
+        {
+            $history = $this->user->history($args['id']);
+
+            if ($history) {
+                return $response->withJson($this->api_response->success(['history' => $history], []));
             }
 
             return $response->withJson($this->api_response->error());

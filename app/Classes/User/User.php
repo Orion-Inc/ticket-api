@@ -4,7 +4,6 @@
     use Ticket\Classes\App;
 
     use Ticket\Models\Users;
-    use function GuzzleHttp\json_encode;
 
     class User extends App
     {
@@ -76,6 +75,11 @@
             $result = Users::where('id', $id)->delete();
             
             return $result;
+        }
+
+        public function history($id)
+        {
+            return true;
         }
     }
     
