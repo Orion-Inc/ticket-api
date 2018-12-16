@@ -14,7 +14,7 @@
                 $this->get('/all', 'UsersController:all_users')->setName('api.v1.user-getAll');
                 $this->post('/new', 'UsersController:new_user')->setName('api.v1.user-new');
                 
-                $this->get('/{id}', 'UsersController:get_user')->setName('api.v1.user-getThis');
+                $this->get('/{id}', 'UsersController:get_user')->setName('api.v1.user-get');
                 $this->group('/{id}', function() {
                     $this->get('/history', 'UsersController:user_history')->setName('api.v1.user-history');
 
@@ -27,7 +27,7 @@
                 $this->get('/all', 'VersionController:index')->setName('api.v1.event-getAll');
                 $this->post('/create', 'VersionController:index')->setName('api.v1.event-new');
     
-                $this->get('/{id}', 'VersionController:index')->setName('api.v1.event-getThis');
+                $this->get('/{id}', 'VersionController:index')->setName('api.v1.event-get');
                 $this->group('/{id}', function() {
                     $this->post('/save', 'VersionController:index')->setName('api.v1.event-save');
                     $this->post('/delete', 'VersionController:index')->setName('api.v1.event-delete');
