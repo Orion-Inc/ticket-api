@@ -9,7 +9,7 @@
     {
         public function all_users($request, $response)
         {
-            $users = $this->user->getAll();
+            $users = $this->user->all();
 
             if ($users) {
                 return $response->withJson($this->api_response->success(['users' => $users], []));
@@ -26,18 +26,21 @@
                 'type' => v::notEmpty()->in(['administrator','organizer','customer']),
                 'full_name' => v::notEmpty()->alpha(),
                 'phone' => v::notEmpty()->phone(),
-                'event_organizer' => v::boolVal(),
+                'event_organizer' => v::optional(v::oneOf(
+                    v::intVal(),
+                    v::nullType()
+                )),
             ]);
 
             if ($validation->failed()) {
                 return $response->withJson($this->api_response->error($validation->getErrors()));
             }
 
-            $res = $this->user->newUser($request->getParams());
+            $res = $this->user->create($request->getParams());
 
             if ($res) {
                 return $response->withJson($this->api_response->success(
-                    ['user' => $this->user->getUser($res['id'])], 
+                    ['user' => $this->user->get($res['id'])], 
                     'User created successfully.'
                 ));
             }
@@ -47,10 +50,53 @@
 
         public function get_user($request, $response, $args)
         {
-            $user = $this->user->getUser($args['id']);
+            $user = $this->user->get($args['id']);
 
             if ($user) {
                 return $response->withJson($this->api_response->success(['user' => $user], []));
+            }
+
+            return $response->withJson($this->api_response->error());
+        }
+
+        public function update_user($request, $response, $args)
+        {
+            $user_email = $this->user->get($args['id'])[0]['email'];
+
+            $validation = $this->validator->validate($request, [
+                'email' => ($request->getParam('email') == $user_email) ? v::noWhitespace()->notEmpty()->email() : v::noWhitespace()->notEmpty()->email()->emailAvailable(),
+                'password' => v::notEmpty(),
+                'type' => v::notEmpty()->in(['administrator','organizer','customer']),
+                'full_name' => v::notEmpty()->alpha(),
+                'phone' => v::notEmpty()->phone(),
+                'event_organizer' => v::optional(v::oneOf(
+                    v::intVal(),
+                    v::nullType()
+                )),
+            ]);
+
+            if ($validation->failed()) {
+                return $response->withJson($this->api_response->error($validation->getErrors()));
+            }
+
+            $user = $this->user->save($args['id'], $request->getParams());
+
+            if ($user) {
+                return $response->withJson($this->api_response->success(
+                    ['user' => $this->user->get($user['id'])], 
+                    'User updated successfully.'
+                ));
+            }
+
+            return $response->withJson($this->api_response->error());
+        }
+        
+        public function delete_user($request, $response, $args)
+        {
+            $user = $this->user->delete($args['id']);
+
+            if ($user) {
+                return $response->withJson($this->api_response->success([], 'User deleted successfully.'));
             }
 
             return $response->withJson($this->api_response->error());

@@ -18,8 +18,8 @@
                 $this->group('/{id}', function() {
                     $this->get('/history', 'VersionController:index')->setName('api.v1.user-history');
 
-                    $this->post('/save', 'VersionController:index')->setName('api.v1.user-save');
-                    $this->post('/delete', 'VersionController:index')->setName('api.v1.user-delete');
+                    $this->post('/save', 'UsersController:update_user')->setName('api.v1.user-save');
+                    $this->post('/delete', 'UsersController:delete_user')->setName('api.v1.user-delete');
                 });
             });
 

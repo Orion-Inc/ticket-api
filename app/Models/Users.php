@@ -1,5 +1,4 @@
 <?php
-
     namespace Ticket\Models;
 
     use Illuminate\Database\Eloquent\Model;
@@ -13,7 +12,7 @@
             'full_name',
             'phone',
             'event_organizer',
-            'activate'
+            'activate',
         ];
     }
     
