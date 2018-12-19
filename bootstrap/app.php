@@ -68,12 +68,6 @@
         return new \Ticket\Classes\Validation\Validator;
     };
 
-    $container['randomlib'] = function ($container){
-        $factory = new \RandomLib\Factory;
-
-        return $factory->getHighStrengthGenerator();
-    };
-
     $container['jwt_builder'] = function ($container){
         return new \Lcobucci\JWT\Builder();
     };
@@ -127,14 +121,16 @@
     $app->add(new \Slim\Middleware\JwtAuthentication([
         "path" => "/api/{$v}",
         "logger" => $container['logger'],
+        "header" => "X-Access-Token",
         "secret" => $container['jwt_secret'],
         "rules" => [
             new \Slim\Middleware\JwtAuthentication\RequestPathRule([
                 "path" => "/api/{$v}",
                 "passthrough" => [
                     "/api/{$v}/version",
-                    "/api/{$v}/auth/sign-in",
+                    "/api/{$v}/auth/authenticate",
                     "/api/{$v}/auth/sign-up",
+                    "/api/{$v}/auth/activate/",
                     "/api/{$v}/auth/forgot-password",
                     "/api/{$v}/auth/reset-password",
                 ]
@@ -154,26 +150,6 @@
             return $response
                 ->withHeader("Content-Type", "application/json")
                 ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
-        }
-    ]));
-        
-    // $app->add(new \Slim\Middleware\HttpBasicAuthentication([
-    //     "path" => "/api/token",
-    //     "users" => [
-    //         "user" => "password"
-    //     ]
-    // ]));
-        
-    $app->add(new \Tuupola\Middleware\Cors([
-        "logger" => $container["logger"],
-        "origin" => ["*"],
-        "methods" => ["GET", "POST", "PUT", "PATCH", "DELETE"],
-        "headers.allow" => ["Authorization", "If-Match", "If-Unmodified-Since"],
-        "headers.expose" => ["Authorization", "Etag"],
-        "credentials" => true,
-        "cache" => 60,
-        "error" => function ($request, $response, $arguments) {
-            return new UnauthorizedResponse($arguments["message"], 401);
         }
     ]));
 

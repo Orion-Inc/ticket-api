@@ -1,6 +1,9 @@
 <?php
     namespace Ticket\Helpers;
 
+    use Firebase\JWT\JWT;
+    use Tuupola\Base62;
+
     class Helpers
     {
         public function hash($raw_text)
@@ -13,12 +16,35 @@
             return $hashed_text;
         }
 
-        public function generate_jwt($data)
+        public function generate_string($length = 128, $contains = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
         {
-            # code...
+            $factory = new \RandomLib\Factory;
+            $generator = $factory->getHighStrengthGenerator();
+
+            return $generator->generateString($length, $contains);
         }
 
-        public function decode_jwt(String $token)
+        public function generate_auth_jwt($user_data, $signed_secret)
+        {
+            $now = new \DateTime();
+            $future = new \DateTime("+1 hour");
+
+            $jti = (new Base62)->encode(random_bytes(16));
+            $secret = $signed_secret;
+
+            $payload = [
+                "iat" => $now->getTimeStamp(),
+                "exp" => $future->getTimeStamp(),
+                "jti" => $jti,
+                "user" => $user_data
+            ];
+            
+            $token = JWT::encode($payload, $secret, "HS256");
+            
+            return $token;
+        }
+
+        public function decode_jwt($token)
         {
             # code...
         }

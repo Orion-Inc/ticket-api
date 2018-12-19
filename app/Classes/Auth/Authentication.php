@@ -10,12 +10,58 @@
     {
         public function authenticate(array $credentials)
         {
-            # code...
+            $user = Users::where('email', $credentials['email'])->first();
+
+            if ($user) {
+                if ($user->activate) {
+                    if (password_verify($credentials['password'], $user->password)) {
+                        return [
+                            'data' => $this->help_me->generate_auth_jwt($user, $this->jwt_secret),
+                            'message' => 'User session started'
+                        ];
+                    }
+                } else {
+                    return [
+                        'data' => [],
+                        'message' => 'Please activate your account'
+                    ];
+                }
+            }
+        }
+
+        public function activate(array $credentials)
+        {
+            $jwt =  $this->jwt_parser->parse($credentials['token']);
+
+            if ($jwt->verify($this->jwt_signer, $this->jwt_secret)) {
+                $email = $jwt->getClaim('email');
+                $token = $jwt->getClaim('token');
+
+                if ($credentials['email'] == $email) {
+                    $user_id = Users::where([
+                        ['email', $email],
+                        ['token', $token]
+                    ])->value('id');
+    
+                    if ($user_id) {
+                        $activate = Users::where('id', $user_id)->update([
+                            'activate' => 1,
+                            'token' => NULL
+                        ]);
+
+                        if ($activate) {
+                            //Send Email
+                        }
+
+                        return $activate;
+                    }
+                }
+            }
         }
 
         public function recovery($email)
         {
-            $token = $this->randomlib->generateString(128, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+            $token = $this->help_me->generate_string();
 
             $jwt = $this->jwt_builder->setIssuedAt(time())
             ->set('email', $email)
@@ -50,7 +96,8 @@
                 ])->value('id');
 
                 if ($reset_id) {
-                    $password_changed = Users::where('email', $email)->update(['password' => $credentials['new_password']]);
+                    $new_password = $this->help_me->hash($credentials['new_password']);
+                    $password_changed = Users::where('email', $email)->update(['password' => $new_password]);
 
                     if ($password_changed) {
                         //Send Email

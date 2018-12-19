@@ -36,10 +36,21 @@
                     $data[$key] = (!empty($data['event_organizer'])) ? $data['event_organizer'] : NULL;
                 }
             }
-            
+
+            $token = $this->help_me->generate_string();
+            $data['token'] = $token;
+
+            $jwt = $this->jwt_builder->setIssuedAt(time())
+            ->set('email', $data['email'])
+            ->set('token', $token)
+            ->sign($this->jwt_signer, $this->jwt_secret)
+            ->getToken();
+
             $user = Users::create($data);
             
             if ($user) {
+                //Send Email
+
                 return [
                     'id' => $data['email']
                 ];

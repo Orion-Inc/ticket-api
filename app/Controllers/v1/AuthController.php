@@ -21,13 +21,16 @@
             $session = $this->auth->authenticate($request->getParams());
 
             if ($session) {
-                return $response->withJson($this->api_response->success(
-                    [
-                        'token' => '',
-                        'user' => $this->user->get($session['user']['id'])
-                    ], 
-                    'User session started'
-                ));
+                if (empty($session['data'])) {
+                    return $response->withJson($this->api_response->error(
+                        $session['message'],
+                        401
+                    ));
+                }
+
+                return $response->withJson($this->api_response->success([
+                    'token' => $session['data']
+                ], $session['message']));
             }
 
             return $response->withJson($this->api_response->error());
@@ -51,8 +54,19 @@
             if ($res) {
                 return $response->withJson($this->api_response->success(
                     ['user' => $this->user->get($res['id'])], 
-                    'User created successfully'
+                    "User created successfully"
                 ));
+            }
+
+            return $response->withJson($this->api_response->error());
+        }
+
+        public function activate($request, $response, $args)
+        {
+            $activated = $this->auth->activate($args);
+
+            if ($activated) {
+                return $response->withJson($this->api_response->success([],"User account activated successfully"));
             }
 
             return $response->withJson($this->api_response->error());

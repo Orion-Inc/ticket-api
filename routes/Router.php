@@ -4,8 +4,9 @@
             $this->get('/version', 'VersionController:index')->setName('api.v1');
 
             $this->group('/auth', function() {
-                $this->post('/sign-in', 'AuthController:sign_in')->setName('api.v1.auth-signin');
+                $this->post('/authenticate', 'AuthController:sign_in')->setName('api.v1.auth-signin');
                 $this->post('/sign-up', 'AuthController:sign_up')->setName('api.v1.auth-signup');
+                $this->post('/activate/{email}/{token}', 'AuthController:activate')->setName('api.v1.auth-activate');
                 $this->post('/forgot-password', 'AuthController:forgot_password')->setName('api.v1.auth-forgot');
                 $this->post('/reset-password', 'AuthController:reset_password')->setName('api.v1.auth-reset');
             });

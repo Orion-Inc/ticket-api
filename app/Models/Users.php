@@ -13,6 +13,7 @@
             'phone',
             'event_organizer',
             'activate',
+            'token',
         ];
     }
     
