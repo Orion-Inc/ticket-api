@@ -6,6 +6,8 @@
 
     use Respect\Validation\Validator as v;
     use Ticket\Classes\Config as get;
+
+    use Tuupola\Middleware\HttpBasicAuthentication;
     
     use \Illuminate\Database\Capsule\Manager as Capsule;
 
@@ -50,12 +52,16 @@
         return $view;
     };
 
-    $container['logger'] = function ($container){
+    $container['logger'] = function ($container) use ($settings){
         $logger = new \Monolog\Logger($settings['name']);
         $file_handler = new \Monolog\Handler\StreamHandler($settings['path']);
         $logger->pushHandler($file_handler);
 
         return $logger;
+    };
+
+    $container["jwt"] = function ($container) {
+        return new StdClass;
     };
 
     $container['validator'] = function ($container){
@@ -68,12 +74,32 @@
         return $factory->getHighStrengthGenerator();
     };
 
+    $container['jwt_builder'] = function ($container){
+        return new \Lcobucci\JWT\Builder();
+    };
+
+    $container['jwt_parser'] = function ($container){
+        return new \Lcobucci\JWT\Parser();
+    };
+
+    $container['jwt_signer'] = function ($container){
+        return new \Lcobucci\JWT\Signer\Hmac\Sha512;
+    };
+
+    $container['jwt_secret'] = function ($container){
+        return $container->get('settings')['jwt']['secret'];
+    };
+
     $container['config'] = function ($container){
         return new \Ticket\Classes\Config($container);
     };
 
     $container['api_response'] = function ($container){
         return new \Ticket\Classes\Responses\Responses($container);
+    };
+
+    $container['auth'] = function ($container){
+        return new \Ticket\Classes\Auth\Authentication($container);
     };
 
     $container['user'] = function ($container){
@@ -84,10 +110,71 @@
         return new \Ticket\Controllers\v1\VersionController($container);
     };
 
+    $container['AuthController'] = function ($container){
+        return new \Ticket\Controllers\v1\AuthController($container);
+    };
+
     $container['UsersController'] = function ($container){
         return new \Ticket\Controllers\v1\UsersController($container);
     };
 
+    $container['help_me'] = function ($container){
+        return new \Ticket\Helpers\Helpers;
+    };
+
     v::with('Ticket\\Classes\\Validation\\Rules\\');
+
+    $app->add(new \Slim\Middleware\JwtAuthentication([
+        "path" => "/api/{$v}",
+        "logger" => $container['logger'],
+        "secret" => $container['jwt_secret'],
+        "rules" => [
+            new \Slim\Middleware\JwtAuthentication\RequestPathRule([
+                "path" => "/api/{$v}",
+                "passthrough" => [
+                    "/api/{$v}/version",
+                    "/api/{$v}/auth/sign-in",
+                    "/api/{$v}/auth/sign-up",
+                    "/api/{$v}/auth/forgot-password",
+                    "/api/{$v}/auth/reset-password",
+                ]
+            ]),
+            new \Slim\Middleware\JwtAuthentication\RequestMethodRule([
+                "passthrough" => ["OPTIONS"]
+            ]),
+        ],
+        "callback" => function ($request, $response, $arguments) use ($container) {
+            $container["jwt"] = $arguments["decoded"];
+        },
+        "error" => function ($request, $response, $arguments) {
+            $data["status"] = "error";
+            $data["code"] = 401;
+            $data["message"] = $arguments["message"];
+            
+            return $response
+                ->withHeader("Content-Type", "application/json")
+                ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+        }
+    ]));
+        
+    // $app->add(new \Slim\Middleware\HttpBasicAuthentication([
+    //     "path" => "/api/token",
+    //     "users" => [
+    //         "user" => "password"
+    //     ]
+    // ]));
+        
+    $app->add(new \Tuupola\Middleware\Cors([
+        "logger" => $container["logger"],
+        "origin" => ["*"],
+        "methods" => ["GET", "POST", "PUT", "PATCH", "DELETE"],
+        "headers.allow" => ["Authorization", "If-Match", "If-Unmodified-Since"],
+        "headers.expose" => ["Authorization", "Etag"],
+        "credentials" => true,
+        "cache" => 60,
+        "error" => function ($request, $response, $arguments) {
+            return new UnauthorizedResponse($arguments["message"], 401);
+        }
+    ]));
 
     require __DIR__.'/../routes/Router.php';

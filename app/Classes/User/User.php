@@ -27,17 +27,17 @@
 
         public function create($data)
         {
-            $user = Users::create([
-                'email' => $data['email'],
-                'password' => password_hash($data['password'], PASSWORD_BCRYPT,[
-                    'cost' => 11,
-                    'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
-                ]),
-                'type' => $data['type'],
-                'full_name' => $data['full_name'],
-                'phone' => $data['phone'],
-                'event_organizer' => (!empty($data['event_organizer'])) ? $data['event_organizer'] : NULL,
-            ]);
+            foreach ($data as $key => $value) {
+                if ($key == 'password') {
+                    $data[$key] = $this->help_me->hash($value);
+                }
+
+                if ($key == 'event_organizer') {
+                    $data[$key] = (!empty($data['event_organizer'])) ? $data['event_organizer'] : NULL;
+                }
+            }
+            
+            $user = Users::create($data);
             
             if ($user) {
                 return [
@@ -50,10 +50,7 @@
         {
             foreach ($data as $key => $value) {
                 if ($key == 'password') {
-                    $data[$key] = password_hash($value, PASSWORD_BCRYPT,[
-                        'cost' => 11,
-                        'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
-                    ]);
+                    $data[$key] = $this->help_me->hash($value);
                 }
 
                 if ($key == 'event_organizer') {

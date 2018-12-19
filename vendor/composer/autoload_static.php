@@ -93,6 +93,7 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'N' => 
         array (
             'Noodlehaus\\' => 11,
+            'Neomerx\\Cors\\' => 13,
         ),
         'M' => 
         array (
@@ -260,6 +261,7 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'Tuupola\\Middleware\\' => 
         array (
             0 => __DIR__ . '/..' . '/tuupola/branca-middleware/src',
+            1 => __DIR__ . '/..' . '/tuupola/cors-middleware/src',
         ),
         'Tuupola\\Http\\Factory\\' => 
         array (
@@ -299,7 +301,8 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         ),
         'Slim\\Middleware\\' => 
         array (
-            0 => __DIR__ . '/..' . '/tuupola/slim-jwt-auth/src',
+            0 => __DIR__ . '/..' . '/tuupola/slim-basic-auth/src',
+            1 => __DIR__ . '/..' . '/tuupola/slim-jwt-auth/src',
         ),
         'Slim\\Flash\\' => 
         array (
@@ -336,6 +339,10 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'Noodlehaus\\' => 
         array (
             0 => __DIR__ . '/..' . '/hassankhan/config/src',
+        ),
+        'Neomerx\\Cors\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/neomerx/cors-psr7/src',
         ),
         'Monolog\\' => 
         array (
@@ -1223,6 +1230,23 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'Monolog\\ResettableInterface' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/ResettableInterface.php',
         'Monolog\\SignalHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/SignalHandler.php',
         'Monolog\\Utils' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Utils.php',
+        'Neomerx\\Cors\\AnalysisResult' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/AnalysisResult.php',
+        'Neomerx\\Cors\\Analyzer' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Analyzer.php',
+        'Neomerx\\Cors\\Contracts\\AnalysisResultInterface' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/AnalysisResultInterface.php',
+        'Neomerx\\Cors\\Contracts\\AnalysisStrategyInterface' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/AnalysisStrategyInterface.php',
+        'Neomerx\\Cors\\Contracts\\AnalyzerInterface' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/AnalyzerInterface.php',
+        'Neomerx\\Cors\\Contracts\\Constants\\CorsRequestHeaders' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Constants/CorsRequestHeaders.php',
+        'Neomerx\\Cors\\Contracts\\Constants\\CorsResponseHeaders' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Constants/CorsResponseHeaders.php',
+        'Neomerx\\Cors\\Contracts\\Constants\\SimpleRequestHeaders' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Constants/SimpleRequestHeaders.php',
+        'Neomerx\\Cors\\Contracts\\Constants\\SimpleRequestMethods' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Constants/SimpleRequestMethods.php',
+        'Neomerx\\Cors\\Contracts\\Constants\\SimpleResponseHeaders' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Constants/SimpleResponseHeaders.php',
+        'Neomerx\\Cors\\Contracts\\Factory\\FactoryInterface' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Factory/FactoryInterface.php',
+        'Neomerx\\Cors\\Contracts\\Http\\ParsedUrlInterface' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Http/ParsedUrlInterface.php',
+        'Neomerx\\Cors\\Contracts\\Strategies\\SettingsStrategyInterface' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Strategies/SettingsStrategyInterface.php',
+        'Neomerx\\Cors\\Factory\\Factory' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Factory/Factory.php',
+        'Neomerx\\Cors\\Http\\ParsedUrl' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Http/ParsedUrl.php',
+        'Neomerx\\Cors\\Log\\LoggerAwareTrait' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Log/LoggerAwareTrait.php',
+        'Neomerx\\Cors\\Strategies\\Settings' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Strategies/Settings.php',
         'Noodlehaus\\AbstractConfig' => __DIR__ . '/..' . '/hassankhan/config/src/AbstractConfig.php',
         'Noodlehaus\\Config' => __DIR__ . '/..' . '/hassankhan/config/src/Config.php',
         'Noodlehaus\\ConfigInterface' => __DIR__ . '/..' . '/hassankhan/config/src/ConfigInterface.php',
@@ -2160,6 +2184,13 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'Slim\\Interfaces\\RouteInterface' => __DIR__ . '/..' . '/slim/slim/Slim/Interfaces/RouteInterface.php',
         'Slim\\Interfaces\\RouterInterface' => __DIR__ . '/..' . '/slim/slim/Slim/Interfaces/RouterInterface.php',
         'Slim\\MiddlewareAwareTrait' => __DIR__ . '/..' . '/slim/slim/Slim/MiddlewareAwareTrait.php',
+        'Slim\\Middleware\\HttpBasicAuthentication' => __DIR__ . '/..' . '/tuupola/slim-basic-auth/src/HttpBasicAuthentication.php',
+        'Slim\\Middleware\\HttpBasicAuthentication\\ArrayAuthenticator' => __DIR__ . '/..' . '/tuupola/slim-basic-auth/src/HttpBasicAuthentication/ArrayAuthenticator.php',
+        'Slim\\Middleware\\HttpBasicAuthentication\\AuthenticatorInterface' => __DIR__ . '/..' . '/tuupola/slim-basic-auth/src/HttpBasicAuthentication/AuthenticatorInterface.php',
+        'Slim\\Middleware\\HttpBasicAuthentication\\PdoAuthenticator' => __DIR__ . '/..' . '/tuupola/slim-basic-auth/src/HttpBasicAuthentication/PdoAuthenticator.php',
+        'Slim\\Middleware\\HttpBasicAuthentication\\RequestMethodRule' => __DIR__ . '/..' . '/tuupola/slim-basic-auth/src/HttpBasicAuthentication/RequestMethodRule.php',
+        'Slim\\Middleware\\HttpBasicAuthentication\\RequestPathRule' => __DIR__ . '/..' . '/tuupola/slim-basic-auth/src/HttpBasicAuthentication/RequestPathRule.php',
+        'Slim\\Middleware\\HttpBasicAuthentication\\RuleInterface' => __DIR__ . '/..' . '/tuupola/slim-basic-auth/src/HttpBasicAuthentication/RuleInterface.php',
         'Slim\\Middleware\\JwtAuthentication' => __DIR__ . '/..' . '/tuupola/slim-jwt-auth/src/JwtAuthentication.php',
         'Slim\\Middleware\\JwtAuthentication\\RequestMethodRule' => __DIR__ . '/..' . '/tuupola/slim-jwt-auth/src/JwtAuthentication/RequestMethodRule.php',
         'Slim\\Middleware\\JwtAuthentication\\RequestPathRule' => __DIR__ . '/..' . '/tuupola/slim-jwt-auth/src/JwtAuthentication/RequestPathRule.php',
@@ -2256,9 +2287,24 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Ticket\\Classes\\App' => __DIR__ . '/../..' . '/app/Classes/App.php',
+        'Ticket\\Classes\\Auth\\Authentication' => __DIR__ . '/../..' . '/app/Classes/Auth/Authentication.php',
         'Ticket\\Classes\\Config' => __DIR__ . '/../..' . '/app/Classes/Config.php',
+        'Ticket\\Classes\\Responses\\Responses' => __DIR__ . '/../..' . '/app/Classes/Responses/Responses.php',
+        'Ticket\\Classes\\User\\User' => __DIR__ . '/../..' . '/app/Classes/User/User.php',
+        'Ticket\\Classes\\Validation\\Exceptions\\EmailAvailableException' => __DIR__ . '/../..' . '/app/Classes/Validation/Exceptions/EmailAvailableException.php',
+        'Ticket\\Classes\\Validation\\Exceptions\\IsCurrentPasswordException' => __DIR__ . '/../..' . '/app/Classes/Validation/Exceptions/IsCurrentPasswordException.php',
+        'Ticket\\Classes\\Validation\\Exceptions\\PhoneAvailableException' => __DIR__ . '/../..' . '/app/Classes/Validation/Exceptions/PhoneAvailableException.php',
+        'Ticket\\Classes\\Validation\\Rules\\EmailAvailable' => __DIR__ . '/../..' . '/app/Classes/Validation/Rules/EmailAvailable.php',
+        'Ticket\\Classes\\Validation\\Rules\\IsCurrentPassword' => __DIR__ . '/../..' . '/app/Classes/Validation/Rules/IsCurrentPassword.php',
+        'Ticket\\Classes\\Validation\\Rules\\PhoneAvailable' => __DIR__ . '/../..' . '/app/Classes/Validation/Rules/PhoneAvailable.php',
+        'Ticket\\Classes\\Validation\\Validator' => __DIR__ . '/../..' . '/app/Classes/Validation/Validator.php',
         'Ticket\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Contoller.php',
+        'Ticket\\Controllers\\v1\\AuthController' => __DIR__ . '/../..' . '/app/Controllers/v1/AuthController.php',
+        'Ticket\\Controllers\\v1\\UsersController' => __DIR__ . '/../..' . '/app/Controllers/v1/UsersController.php',
         'Ticket\\Controllers\\v1\\VersionController' => __DIR__ . '/../..' . '/app/Controllers/v1/VersionController.php',
+        'Ticket\\Helpers\\Helpers' => __DIR__ . '/../..' . '/app/Helpers/Helpers.php',
+        'Ticket\\Models\\ResetPasswords' => __DIR__ . '/../..' . '/app/Models/ResetPasswords.php',
+        'Ticket\\Models\\Users' => __DIR__ . '/../..' . '/app/Models/Users.php',
         'Tuupola\\Base62' => __DIR__ . '/..' . '/tuupola/base62/src/Base62.php',
         'Tuupola\\Base62Proxy' => __DIR__ . '/..' . '/tuupola/base62/src/Base62Proxy.php',
         'Tuupola\\Base62\\BaseEncoder' => __DIR__ . '/..' . '/tuupola/base62/src/Base62/BaseEncoder.php',
@@ -2276,6 +2322,7 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'Tuupola\\Middleware\\BrancaAuthentication\\RequestMethodRule' => __DIR__ . '/..' . '/tuupola/branca-middleware/src/BrancaAuthentication/RequestMethodRule.php',
         'Tuupola\\Middleware\\BrancaAuthentication\\RequestPathRule' => __DIR__ . '/..' . '/tuupola/branca-middleware/src/BrancaAuthentication/RequestPathRule.php',
         'Tuupola\\Middleware\\BrancaAuthentication\\RuleInterface' => __DIR__ . '/..' . '/tuupola/branca-middleware/src/BrancaAuthentication/RuleInterface.php',
+        'Tuupola\\Middleware\\Cors' => __DIR__ . '/..' . '/tuupola/cors-middleware/src/Cors.php',
         'Twig\\Cache\\CacheInterface' => __DIR__ . '/..' . '/twig/twig/src/Cache/CacheInterface.php',
         'Twig\\Cache\\FilesystemCache' => __DIR__ . '/..' . '/twig/twig/src/Cache/FilesystemCache.php',
         'Twig\\Cache\\NullCache' => __DIR__ . '/..' . '/twig/twig/src/Cache/NullCache.php',

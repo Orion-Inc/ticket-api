@@ -17,7 +17,7 @@
             "prefix": "tkt_"
         },
         "jwt": {
-            "secret": ""
+            "secret": "SoIwalkintotheclublikeeverybodyhates_me7204966443"
         },
         "mail": {
             "host": "",

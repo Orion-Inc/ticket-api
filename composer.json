@@ -21,7 +21,11 @@
         "ircmaxell/random-lib": "^1.2",
         "spatie/string": "^2.2",
         "tuupola/slim-jwt-auth": "^2.4",
-        "tuupola/branca-middleware": "^0.1.0"
+        "tuupola/branca-middleware": "^0.1.0",
+        "firebase/php-jwt": "^5.0",
+        "tuupola/base62": "^0.11.1",
+        "tuupola/slim-basic-auth": "^2.3",
+        "tuupola/cors-middleware": "^0.5.2"
     },
     "autoload": {
         "psr-4": {

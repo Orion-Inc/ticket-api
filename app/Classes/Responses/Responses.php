@@ -10,7 +10,7 @@
             return [
                 'status' => 'ok',
                 'code' => $code,
-                'messages' => $messages,
+                'message' => $messages,
                 'results' => $results
             ];
         }
@@ -20,7 +20,7 @@
             return [
                 'status' => 'error',
                 'code' => $code,
-                'messages' => (!empty($messages)) ? $messages : 'The server either does not recognize the request method, or it lacks the ability to fulfill the request.' 
+                'message' => (!empty($messages)) ? $messages : 'The server either does not recognize the request method, or it lacks the ability to fulfill the request' 
             ];
         }
     }

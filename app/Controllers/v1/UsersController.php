@@ -97,7 +97,7 @@
             $user = $this->user->delete($args['id']);
 
             if ($user) {
-                return $response->withJson($this->api_response->success([], 'User deleted successfully.'));
+                return $response->withJson($this->api_response->success([], 'User deleted successfully'));
             }
 
             return $response->withJson($this->api_response->error());
