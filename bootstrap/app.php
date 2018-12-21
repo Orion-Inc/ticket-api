@@ -60,12 +60,16 @@
         return $logger;
     };
 
-    $container["jwt"] = function ($container) {
-        return new StdClass;
+    $container['mailer'] = function ($container) use ($mailer){
+        return new \Ticket\Classes\Mail\Mailer($container, $mailer);
     };
 
     $container['validator'] = function ($container){
         return new \Ticket\Classes\Validation\Validator;
+    };
+
+    $container["jwt"] = function ($container) {
+        return new StdClass;
     };
 
     $container['jwt_builder'] = function ($container){
@@ -118,39 +122,39 @@
 
     v::with('Ticket\\Classes\\Validation\\Rules\\');
 
-    $app->add(new \Slim\Middleware\JwtAuthentication([
-        "path" => "/api/{$v}",
-        "logger" => $container['logger'],
-        "header" => "X-Access-Token",
-        "secret" => $container['jwt_secret'],
-        "rules" => [
-            new \Slim\Middleware\JwtAuthentication\RequestPathRule([
-                "path" => "/api/{$v}",
-                "passthrough" => [
-                    "/api/{$v}/version",
-                    "/api/{$v}/auth/authenticate",
-                    "/api/{$v}/auth/sign-up",
-                    "/api/{$v}/auth/activate/",
-                    "/api/{$v}/auth/forgot-password",
-                    "/api/{$v}/auth/reset-password",
-                ]
-            ]),
-            new \Slim\Middleware\JwtAuthentication\RequestMethodRule([
-                "passthrough" => ["OPTIONS"]
-            ]),
-        ],
-        "callback" => function ($request, $response, $arguments) use ($container) {
-            $container["jwt"] = $arguments["decoded"];
-        },
-        "error" => function ($request, $response, $arguments) {
-            $data["status"] = "error";
-            $data["code"] = 401;
-            $data["message"] = $arguments["message"];
+    // $app->add(new \Slim\Middleware\JwtAuthentication([
+    //     "path" => "/api/{$v}",
+    //     "logger" => $container['logger'],
+    //     "header" => "X-Access-Token",
+    //     "secret" => $container['jwt_secret'],
+    //     "rules" => [
+    //         new \Slim\Middleware\JwtAuthentication\RequestPathRule([
+    //             "path" => "/api/{$v}",
+    //             "passthrough" => [
+    //                 "/api/{$v}/version",
+    //                 "/api/{$v}/auth/authenticate",
+    //                 "/api/{$v}/auth/sign-up",
+    //                 "/api/{$v}/auth/activate/",
+    //                 "/api/{$v}/auth/forgot-password",
+    //                 "/api/{$v}/auth/reset-password",
+    //             ]
+    //         ]),
+    //         new \Slim\Middleware\JwtAuthentication\RequestMethodRule([
+    //             "passthrough" => ["OPTIONS"]
+    //         ]),
+    //     ],
+    //     "callback" => function ($request, $response, $arguments) use ($container) {
+    //         $container["jwt"] = $arguments["decoded"];
+    //     },
+    //     "error" => function ($request, $response, $arguments) {
+    //         $data["status"] = "error";
+    //         $data["code"] = 401;
+    //         $data["message"] = $arguments["message"];
             
-            return $response
-                ->withHeader("Content-Type", "application/json")
-                ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
-        }
-    ]));
+    //         return $response
+    //             ->withHeader("Content-Type", "application/json")
+    //             ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+    //     }
+    // ]));
 
     require __DIR__.'/../routes/Router.php';

@@ -22,7 +22,6 @@
                     }
                 } else {
                     return [
-                        'data' => [],
                         'message' => 'Please activate your account'
                     ];
                 }

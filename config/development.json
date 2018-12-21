@@ -20,13 +20,13 @@
             "secret": "SoIwalkintotheclublikeeverybodyhates_me7204966443"
         },
         "mail": {
-            "host": "",
-            "username": "",
-            "password": "",
+            "host": "smtp.mailgun.org",
+            "username": "postmaster@sandboxee3b220dc6bf442f89074de5ac6803c5.mailgun.org",
+            "password": "cc066968c433d1d80eaa995ad5fa63d8-9b463597-a6ba2e01",
             "port": 587,
             "html": true,
-            "mailgun-api": "",
-            "mailgun-domain": ""
+            "mailgun-api": "193d81111cc2e198e0bb050a9b27e5b4-9b463597-2ecb7220",
+            "mailgun-domain": "sandboxee3b220dc6bf442f89074de5ac6803c5.mailgun.org"
         },
         "sms": {
             "username": "",

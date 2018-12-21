@@ -21,7 +21,7 @@
             $session = $this->auth->authenticate($request->getParams());
 
             if ($session) {
-                if (empty($session['data'])) {
+                if (!isset($session['data'])) {
                     return $response->withJson($this->api_response->error(
                         $session['message'],
                         401
