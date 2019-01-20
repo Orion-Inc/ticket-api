@@ -88,6 +88,10 @@
         return $container->get('settings')['jwt']['secret'];
     };
 
+    $container['help_me'] = function ($container){
+        return new \Ticket\Helpers\Helpers;
+    };
+    
     $container['config'] = function ($container){
         return new \Ticket\Classes\Config($container);
     };
@@ -116,9 +120,7 @@
         return new \Ticket\Controllers\v1\UsersController($container);
     };
 
-    $container['help_me'] = function ($container){
-        return new \Ticket\Helpers\Helpers;
-    };
+    
 
     v::with('Ticket\\Classes\\Validation\\Rules\\');
 

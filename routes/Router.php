@@ -25,7 +25,7 @@
             });
 
             $this->group('/event', function() {
-                $this->get('/all', 'VersionController:index')->setName('api.v1.event-getAll');
+                $this->get('/all', 'EventsController:all_events')->setName('api.v1.event-getAll');
                 $this->post('/create', 'VersionController:index')->setName('api.v1.event-new');
     
                 $this->get('/{id}', 'VersionController:index')->setName('api.v1.event-get');
