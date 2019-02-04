@@ -5,11 +5,11 @@
     
     use Ticket\Controllers\Controller as Controller;
 
-    class UsersController extends Controller
+    class EventsController extends Controller
     {
         public function all_events($request, $response)
         {
-            $events = $this->event->all();
+            $events = $this->events->all();
 
             if ($events) {
                 return $response->withJson($this->api_response->success(['events' => $events], []));
@@ -47,6 +47,17 @@
 
         //     return $response->withJson($this->api_response->error());
         // }
+
+        public function get_event($request, $response, $args)
+        {
+            $event = $this->events->get($args['id']);
+
+            if ($event) {
+                return $response->withJson($this->api_response->success(['event' => $event], []));
+            }
+
+            return $response->withJson($this->api_response->error());
+        }
 
     }
     

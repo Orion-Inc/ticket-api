@@ -108,6 +108,10 @@
         return new \Ticket\Classes\User\User($container);
     };
 
+    $container['events'] = function ($container){
+        return new \Ticket\Classes\Event\Event($container);
+    };
+
     $container['VersionController'] = function ($container){
         return new \Ticket\Controllers\v1\VersionController($container);
     };
@@ -120,7 +124,9 @@
         return new \Ticket\Controllers\v1\UsersController($container);
     };
 
-    
+    $container['EventsController'] = function ($container){
+        return new \Ticket\Controllers\v1\EventsController($container);
+    };
 
     v::with('Ticket\\Classes\\Validation\\Rules\\');
 
