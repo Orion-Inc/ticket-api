@@ -1,26 +1,26 @@
 <?php
-    namespace Ticket\Classes\User;
+    namespace Ticket\Classes\Users;
 
     use Ticket\Classes\App;
 
-    use Ticket\Models\Users;
+    use Ticket\Models\User;
 
-    class User extends App
+    class Users extends App
     {
         public function all()
         {
-            $users = Users::select('id', 'full_name', 'email', 'phone', 'type', 'event_organizer', 'activate', 'created_at', 'updated_at')->get();
+            $users = User::select('id', 'full_name', 'email', 'phone', 'type', 'event_organizer', 'activate', 'created_at', 'updated_at')->get();
 
             return $users;
         }
 
         public function get($param)
         {
-            $user = Users::select('id', 'full_name', 'email', 'phone', 'type', 'event_organizer', 'activate', 'created_at', 'updated_at')
+            $user = User::select('id', 'full_name', 'email', 'phone', 'type', 'event_organizer', 'activate', 'created_at', 'updated_at')
                     ->where('id', $param)
                     ->orWhere('email', $param)
                     ->orWhere('phone', $param)
-                    ->get();
+                    ->get()->first();
 
             return $user;
         }
@@ -46,13 +46,14 @@
             ->sign($this->jwt_signer, $this->jwt_secret)
             ->getToken();
 
-            $user = Users::create($data);
+            $user = User::create($data);
             
             if ($user) {
                 //Send Email
+                //$data['email'];
 
                 return [
-                    'id' => $data['email']
+                    'id' => $user->id
                 ];
             }
         }
@@ -69,7 +70,7 @@
                 }
             }
 
-            $saved = Users::where('id', $id)->update($data);
+            $saved = User::where('id', $id)->update($data);
             
             if ($saved) {
                 return [
@@ -80,7 +81,7 @@
 
         public function delete($id)
         {
-            $result = Users::where('id', $id)->delete();
+            $result = User::where('id', $id)->delete();
             
             return $result;
         }

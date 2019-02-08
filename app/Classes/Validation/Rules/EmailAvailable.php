@@ -4,13 +4,13 @@
     use Respect\Validation\Rules\AbstractRule;
     //use Ticket\Classes\Auth\Auth;
 
-    use Ticket\Models\Users;
+    use Ticket\Models\User;
 
     class EmailAvailable extends AbstractRule
     {
         public function validate($input)
         {
-            return Users::where('email', $input)->count() === 0;
+            return User::where('email', $input)->count() === 0;
         }
     }
     

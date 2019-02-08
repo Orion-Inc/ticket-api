@@ -1,17 +1,18 @@
 <?php
-    namespace Ticket\Classes\Event;
+    namespace Ticket\Classes\Events;
 
     use Ticket\Classes\App;
 
-    use Ticket\Models\Events;
+    use Ticket\Models\Event;
 
-    class Event extends App
+    class Events extends App
     {
         public function all()
         {
-            $events = Events::select(
+            $events = Event::select(
                 'id',
                 'event_code',
+                'url_key',
                 'title',
                 'category',
                 'start_date',
@@ -38,9 +39,10 @@
 
         public function get($param)
         {
-            $event = Events::select(
+            $event = Event::select(
                 'id',
                 'event_code',
+                'url_key',
                 'title',
                 'category',
                 'start_date',
@@ -62,14 +64,44 @@
                 'updated_at'
             )->where('id', $param)
             ->orWhere('event_code', $param)
+            ->orWhere('url_key', $param)
             ->get();
 
             return $event;
         }
 
-        public function create($data)
+        public function create($data, $event_data = [])
         {
-            
+            $event_data['event_code'] = Event::generate_code();
+            $event_data['url_key'] = Event::generate_url_key();
+
+            foreach ($data as $key => $value) {
+                if ($key == 'is_protected' && !$data[$key]) {
+                    $data['passcode'] = NULL;
+                } else {
+                    $data['passcode'] = $this->help_me->hash($data['passcode']);
+                }
+
+                if ($key == 'start_date_time') {
+                    //$data[$key] = NULL;
+                }
+
+                if ($key == 'end_date_time') {
+                    //$data[$key] = NULL;
+                }
+
+                $event_data[$key] = $data[$key];
+            }
+
+            echo json_encode($event_data);
+            die();
+            $event = Event::create($event_data);
+
+            if ($event) {
+                return [
+                    'id' => $event->id
+                ];
+            }
         }
 
         public function save($id, array $data)
@@ -79,7 +111,7 @@
 
         public function delete($id)
         {
-            $result = Events::where('id', $id)->delete();
+            $result = Event::where('id', $id)->delete();
             
             return $result;
         }

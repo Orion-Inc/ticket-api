@@ -4,13 +4,13 @@
     use Respect\Validation\Rules\AbstractRule;
     //use Ticket\Classes\Auth\Auth;
 
-    use Ticket\Models\Users;
+    use Ticket\Models\User;
 
     class PhoneAvailable extends AbstractRule
     {
         public function validate($input)
         {
-            return Users::where('phone', $input)->count() === 0;
+            return User::where('phone', $input)->count() === 0;
         }
     }
     

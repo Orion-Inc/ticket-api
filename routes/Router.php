@@ -2,6 +2,7 @@
     $app->group('/api', function() {
         $this->group('/v1', function() {
             $this->get('/version', 'VersionController:index')->setName('api.v1');
+            $this->get('/playground', 'VersionController:playground');
 
             $this->group('/auth', function() {
                 $this->post('/authenticate', 'AuthController:sign_in')->setName('api.v1.auth-signin');
@@ -27,13 +28,13 @@
 
             $this->group('/event', function() {
                 $this->get('/all', 'EventsController:all_events')->setName('api.v1.event-getAll');
-                $this->post('/create', 'VersionController:index')->setName('api.v1.event-new');
+                $this->post('/create', 'EventsController:new_event')->setName('api.v1.event-new');
     
                 
                 $this->group('/{id}', function() {
                     $this->get('', 'EventsController:get_event')->setName('api.v1.event-get');
                     $this->post('/save', 'VersionController:index')->setName('api.v1.event-save');
-                    $this->post('/delete', 'VersionController:index')->setName('api.v1.event-delete');
+                    $this->post('/delete', 'EventsController:delete_event')->setName('api.v1.event-delete');
                 });
             });
 

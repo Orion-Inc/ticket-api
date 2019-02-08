@@ -9,7 +9,7 @@
     {
         public function all_events($request, $response)
         {
-            $events = $this->events->all();
+            $events = $this->event->all();
 
             if ($events) {
                 return $response->withJson($this->api_response->success(['events' => $events], []));
@@ -18,39 +18,45 @@
             return $response->withJson($this->api_response->error());
         }
 
-        // public function new_user($request, $response)
-        // {
-        //     $validation = $this->validator->validate($request, [
-        //         'email' => v::noWhitespace()->notEmpty()->email()->emailAvailable(),
-        //         'password' => v::notEmpty(),
-        //         'type' => v::notEmpty()->in(['administrator','organizer','customer']),
-        //         'full_name' => v::notEmpty()->alpha(),
-        //         'phone' => v::notEmpty()->phone()->phoneAvailable(),
-        //         'event_organizer' => v::optional(v::oneOf(
-        //             v::intVal(),
-        //             v::nullType()
-        //         )),
-        //     ]);
+        public function new_event($request, $response)
+        {
+            $validation = $this->validator->validate($request, [
+                'title' => v::notEmpty(),
+                'category' => v::notEmpty(),
+                'start_date_time' => v::notEmpty()->date(),
+                'end_date_time' => v::notEmpty()->date(),
+                'description' => v::notEmpty(),
+                'website' => v::oneOf(v::url(), v::domain()),
+                'venue' => v::notEmpty(),
+                'address' => v::notEmpty(),
+                'location' => v::notEmpty(),
+                'city' => v::notEmpty(),
+                'country' => v::notEmpty(),
+                'is_private' => v::boolVal(),
+                'is_protected' => v::boolVal(),
+                'passcode' => ($request->getParam('is_protected')) ? v::notEmpty() : v::optional(v::notEmpty()),
+                'organizer' => v::notEmpty()->intVal(),
+            ]);
 
-        //     if ($validation->failed()) {
-        //         return $response->withJson($this->api_response->error($validation->getErrors()));
-        //     }
+            if ($validation->failed()) {
+                return $response->withJson($this->api_response->error($validation->getErrors()));
+            }
 
-        //     $res = $this->user->create($request->getParams());
+            $res = $this->event->create($request->getParams());
 
-        //     if ($res) {
-        //         return $response->withJson($this->api_response->success(
-        //             ['user' => $this->user->get($res['id'])], 
-        //             'User created successfully.'
-        //         ));
-        //     }
+            if ($res) {
+                return $response->withJson($this->api_response->success(
+                    ['event' => $this->event->get($res['id'])], 
+                    'Event created successfully.'
+                ));
+            }
 
-        //     return $response->withJson($this->api_response->error());
-        // }
+            return $response->withJson($this->api_response->error());
+        }
 
         public function get_event($request, $response, $args)
         {
-            $event = $this->events->get($args['id']);
+            $event = $this->event->get($args['id']);
 
             if ($event) {
                 return $response->withJson($this->api_response->success(['event' => $event], []));
@@ -59,5 +65,20 @@
             return $response->withJson($this->api_response->error());
         }
 
+        public function update_event($request, $response, $args)
+        {
+            
+        }
+
+        public function delete_event($request, $response, $args)
+        {
+            $event = $this->event->delete($args['id']);
+
+            if ($event) {
+                return $response->withJson($this->api_response->success([], 'Event deleted successfully'));
+            }
+
+            return $response->withJson($this->api_response->error());
+        }
     }
     

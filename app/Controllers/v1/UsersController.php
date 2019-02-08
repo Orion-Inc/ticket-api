@@ -61,8 +61,8 @@
 
         public function update_user($request, $response, $args)
         {
-            $user_email = $this->user->get($args['id'])[0]['email'];
-            $user_phone = $this->user->get($args['id'])[0]['phone'];
+            $user_email = $this->user->get($args['id'])['email'];
+            $user_phone = $this->user->get($args['id'])['phone'];
 
             $validation = $this->validator->validate($request, [
                 'email' => ($request->getParam('email') == $user_email) ? v::noWhitespace()->notEmpty()->email() : v::noWhitespace()->notEmpty()->email()->emailAvailable(),

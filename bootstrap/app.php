@@ -105,11 +105,11 @@
     };
 
     $container['user'] = function ($container){
-        return new \Ticket\Classes\User\User($container);
+        return new \Ticket\Classes\Users\Users($container);
     };
 
-    $container['events'] = function ($container){
-        return new \Ticket\Classes\Event\Event($container);
+    $container['event'] = function ($container){
+        return new \Ticket\Classes\Events\Events($container);
     };
 
     $container['VersionController'] = function ($container){
