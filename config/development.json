@@ -1,6 +1,6 @@
 {
     "settings": {
-        "diplayErrorDetails": true,
+        "displayErrorDetails": true,
         "logger": {
             "name": "Ticket",
             "level": "Monolog\\ Logger::DEBUG",

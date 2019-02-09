@@ -15,18 +15,20 @@
             }
 
             foreach ($data as $key => $value) {
-                if ($key == 'is_protected' && !$data[$key]) {
-                    $data['passcode'] = NULL;
-                } else {
-                    $data['passcode'] = $this->help_me->hash($data['passcode']);
+                if ($key == 'is_protected') {
+                    if ((bool) $data[$key]) {
+                        $data['passcode'] = $this->help_me->hash($data['passcode']);
+                    } else {
+                        $data['passcode'] = NULL;
+                    }
                 }
 
                 if ($key == 'start_date_time') {
-                    $data[$key] = date('Y-m-d H:i:s', strtotime($value));
+                    $data[$key] = date('Y-m-d H:i:s', strtotime($data[$key]));
                 }
 
                 if ($key == 'end_date_time') {
-                    $data[$key] = date('Y-m-d H:i:s', strtotime($value));
+                    $data[$key] = date('Y-m-d H:i:s', strtotime($data[$key]));
                 }
 
                 $event_data[$key] = $data[$key];
@@ -43,8 +45,8 @@
                 'url_key',
                 'title',
                 'category',
-                'start_date',
-                'end_date',
+                'start_date_time',
+                'end_date_time',
                 'description',
                 'website',
                 'hashtags',
@@ -73,8 +75,8 @@
                 'url_key',
                 'title',
                 'category',
-                'start_date',
-                'end_date',
+                'start_date_time',
+                'end_date_time',
                 'description',
                 'website',
                 'hashtags',
@@ -101,7 +103,7 @@
         public function create($data)
         {
             $event_data = $this->prep_event_data($data);
-
+            
             $event = Event::create($event_data);
 
             if ($event) {
@@ -115,12 +117,11 @@
         {
             $event_data = $this->prep_event_data($data, false);
 
-            echo json_encode($event_data);
-            //$updated = Event::where('id', $id)->update($event_data);
-            die();
+            $updated = Event::where('id', $id)->update($event_data);
+            
             if ($updated) {
                 return [
-                    'id' => $event->id
+                    'id' => $id
                 ];
             }
         }

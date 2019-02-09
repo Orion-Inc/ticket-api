@@ -1,6 +1,6 @@
 {
     "settings": {
-        "diplayErrorDetails": true,
+        "displayErrorDetails": false,
         "logger": {
             "name": "Ticket",
             "level": "Monolog\\ Logger::DEBUG",
@@ -39,7 +39,7 @@
         "url": ""
     },
     "twig": {
-        "debug": true
+        "debug": false
     }
 
 }
