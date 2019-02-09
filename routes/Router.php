@@ -21,7 +21,7 @@
                     $this->get('', 'UsersController:get_user')->setName('api.v1.user-get');
                     $this->get('/history', 'UsersController:user_history')->setName('api.v1.user-history');
 
-                    $this->post('/save', 'UsersController:update_user')->setName('api.v1.user-save');
+                    $this->post('/update', 'UsersController:update_user')->setName('api.v1.user-update');
                     $this->post('/delete', 'UsersController:delete_user')->setName('api.v1.user-delete');
                 });
             });
@@ -33,7 +33,7 @@
                 
                 $this->group('/{id}', function() {
                     $this->get('', 'EventsController:get_event')->setName('api.v1.event-get');
-                    $this->post('/save', 'VersionController:index')->setName('api.v1.event-save');
+                    $this->post('/update', 'EventsController:update_event')->setName('api.v1.event-update');
                     $this->post('/delete', 'EventsController:delete_event')->setName('api.v1.event-delete');
                 });
             });

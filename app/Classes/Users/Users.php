@@ -7,6 +7,11 @@
 
     class Users extends App
     {
+        private function prep_user_data()
+        {
+            
+        }
+
         public function all()
         {
             $users = User::select('id', 'full_name', 'email', 'phone', 'type', 'event_organizer', 'activate', 'created_at', 'updated_at')->get();
@@ -58,7 +63,7 @@
             }
         }
 
-        public function save($id, array $data)
+        public function update($id, array $data)
         {
             foreach ($data as $key => $value) {
                 if ($key == 'password') {
@@ -70,9 +75,9 @@
                 }
             }
 
-            $saved = User::where('id', $id)->update($data);
+            $updated = User::where('id', $id)->update($data);
             
-            if ($saved) {
+            if ($updated) {
                 return [
                     'id' => $id
                 ];

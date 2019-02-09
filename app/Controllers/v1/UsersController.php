@@ -80,7 +80,7 @@
                 return $response->withJson($this->api_response->error($validation->getErrors()));
             }
 
-            $user = $this->user->save($args['id'], $request->getParams());
+            $user = $this->user->update($args['id'], $request->getParams());
 
             if ($user) {
                 return $response->withJson($this->api_response->success(
