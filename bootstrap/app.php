@@ -108,6 +108,10 @@
         return new \Ticket\Classes\Users\Users($container);
     };
 
+    $container['organizer'] = function ($container){
+        return new \Ticket\Classes\Users\Organizers($container);
+    };
+
     $container['event'] = function ($container){
         return new \Ticket\Classes\Events\Events($container);
     };
@@ -122,6 +126,10 @@
 
     $container['UsersController'] = function ($container){
         return new \Ticket\Controllers\v1\UsersController($container);
+    };
+
+    $container['OrganizerController'] = function ($container){
+        return new \Ticket\Controllers\v1\OrganizerController($container);
     };
 
     $container['EventsController'] = function ($container){

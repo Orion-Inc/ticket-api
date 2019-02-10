@@ -4,7 +4,6 @@
     use Ticket\Classes\App;
 
     use Ticket\Models\User;
-    use function GuzzleHttp\json_encode;
 
     class Users extends App
     {

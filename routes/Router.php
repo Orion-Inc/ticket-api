@@ -26,6 +26,17 @@
                 });
             });
 
+            $this->group('/organizer', function() {
+                $this->get('/all', 'OrganizerController:all_organizers')->setName('api.v1.organizer-getAll');
+    
+
+                $this->group('/{id}', function() {
+                    $this->get('', 'OrganizerController:get_organizer')->setName('api.v1.organizer-get');
+                    $this->post('/update', 'OrganizerController:update_organizer')->setName('api.v1.organizer-update');
+                    $this->post('/delete', 'OrganizerController:delete_organizer')->setName('api.v1.organizer-delete');
+                });
+            });
+
             $this->group('/event', function() {
                 $this->get('/all', 'EventsController:all_events')->setName('api.v1.event-getAll');
                 $this->post('/create', 'EventsController:new_event')->setName('api.v1.event-new');

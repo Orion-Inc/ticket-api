@@ -13,7 +13,7 @@
 
         public function playground($request, $response)
         {
-            echo Events::generate_code();
+            
         }
     }
     
