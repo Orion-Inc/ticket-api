@@ -8,7 +8,7 @@
     {
         public function index($request, $response)
         {
-            return $response->write('oTikets API v1');
+            return $response->write('oTikets API '.$this->api_version);
         }
 
         public function playground($request, $response)

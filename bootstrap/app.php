@@ -22,6 +22,10 @@
 
     $v = $container->get('app')['api-version'];
 
+    $container['api_version'] = function ($container){
+        return $container->get('app')['api-version'];
+    };
+
     $settings = $container->get('settings')['logger'];
     $db_conn = $container->get('settings')['db'];
     $app_config = $container->get('app');
