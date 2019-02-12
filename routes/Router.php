@@ -28,7 +28,7 @@
 
             $this->group('/organizer', function() {
                 $this->get('/all', 'OrganizerController:all_organizers')->setName('api.v1.organizer-getAll');
-    
+                $this->post('/new', 'OrganizerController:new_organizer')->setName('api.v1.organizer-new');
 
                 $this->group('/{id}', function() {
                     $this->get('', 'OrganizerController:get_organizer')->setName('api.v1.organizer-get');

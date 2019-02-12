@@ -7,6 +7,15 @@
 
     class Organizers extends App
     {
+        private function prep_organizer_data($data, $new = true, $organizer_data = [])
+        {
+            foreach ($data as $key => $value) {
+                $organizer_data[$key] = $data[$key];
+            }
+
+            return $organizer_data;
+        }
+
         public function all()
         {
             $events = Organizer::select(
@@ -54,12 +63,28 @@
 
         public function create($data)
         {
+            $event_data = $this->prep_organizer_data($data);
             
+            $event = Organizer::create($event_data);
+
+            if ($event) {
+                return [
+                    'id' => $event->id
+                ];
+            }
         }
 
         public function update($id, array $data)
         {
+            $data = $this->prep_organizer_data($data);
+
+            $updated = Organizer::where('id', $id)->update($data);
             
+            if ($updated) {
+                return [
+                    'id' => $id
+                ];
+            }
         }
 
         public function delete($id)
