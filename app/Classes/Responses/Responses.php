@@ -1,7 +1,7 @@
 <?php
-    namespace Ticket\Classes\Responses;
+    namespace oTikets\Classes\Responses;
 
-    use Ticket\Classes\App;
+    use oTikets\Classes\App;
 
     class Responses extends App
     {

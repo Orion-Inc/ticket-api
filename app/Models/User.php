@@ -1,5 +1,5 @@
 <?php
-    namespace Ticket\Models;
+    namespace oTikets\Models;
 
     use Illuminate\Database\Eloquent\Model;
 

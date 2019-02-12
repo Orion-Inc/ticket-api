@@ -1,9 +1,9 @@
 <?php
-    namespace Ticket\Controllers\v1;
+    namespace oTikets\Controllers\v1;
 
     use Respect\Validation\Validator as v;
     
-    use Ticket\Controllers\Controller as Controller;
+    use oTikets\Controllers\Controller as Controller;
 
     class UsersController extends Controller
     {

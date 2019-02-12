@@ -1,5 +1,5 @@
 <?php
-    namespace Ticket\Classes;
+    namespace oTikets\Classes;
 
     class App
     {

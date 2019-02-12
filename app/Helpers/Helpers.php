@@ -1,5 +1,5 @@
 <?php
-    namespace Ticket\Helpers;
+    namespace oTikets\Helpers;
 
     use Firebase\JWT\JWT;
     use Tuupola\Base62;

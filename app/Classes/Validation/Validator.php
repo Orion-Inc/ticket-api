@@ -1,5 +1,5 @@
 <?php
-    namespace Ticket\Classes\Validation;
+    namespace oTikets\Classes\Validation;
 
     use Respect\Validation\Validator as Respect;
     use Respect\Validation\Exceptions\NestedValidationException as Disobey;

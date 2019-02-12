@@ -1,5 +1,5 @@
 <?php
-    namespace Ticket\Classes\Mail;
+    namespace oTikets\Classes\Mail;
 
     use Mailgun\Mailgun;
 
@@ -24,7 +24,7 @@
         {
             try {
                 $mail = $this->mgClient->messages()->send($this->domain, [
-                    'from'    => "Ticket <{$data['from']}>",
+                    'from'    => "oTikets <{$data['from']}>",
                     'to'      => $data['to'],
                     'subject' => $data['subject'],
                     'text'    => $data['text'],

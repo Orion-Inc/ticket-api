@@ -1,10 +1,10 @@
 <?php
-    namespace Ticket\Classes\Auth;
+    namespace oTikets\Classes\Auth;
 
-    use Ticket\Classes\App;
+    use oTikets\Classes\App;
 
-    use Ticket\Models\Users;
-    use Ticket\Models\ResetPasswords;
+    use oTikets\Models\Users;
+    use oTikets\Models\ResetPasswords;
 
     class Authentication extends App
     {

@@ -2,20 +2,20 @@
     "settings": {
         "displayErrorDetails": false,
         "logger": {
-            "name": "Ticket",
+            "name": "oTikets",
             "level": "Monolog\\ Logger::DEBUG",
             "path": "__DIR__ . '/../logs/app.log'"
         },
         "db": {
             "driver": "mysql",
-            "host": "db4free.net",
-            "port": "3306",
-            "database": "ft_tickets",
-            "username": "faridibin",
-            "password": "hamzazara",
+            "host": "",
+            "port": "",
+            "database": "",
+            "username": "",
+            "password": "",
             "charset": "utf8",
             "collation": "utf8_unicode_ci",
-            "prefix": "tkt_"
+            "prefix": "otkt_"
         },
         "jwt": {
             "secret": ""
@@ -35,7 +35,7 @@
         }
     },
     "app": {
-        "name": "Ticket",
+        "name": "oTikets",
         "url": ""
     },
     "twig": {

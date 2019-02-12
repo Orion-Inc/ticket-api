@@ -1,8 +1,8 @@
 <?php
-    namespace Ticket\Classes\Validation\Rules;
+    namespace oTikets\Classes\Validation\Rules;
 
     use Respect\Validation\Rules\AbstractRule;
-    //use Ticket\Classes\Auth\Auth;
+    //use oTikets\Classes\Auth\Auth;
 
     class IsCurrentPassword extends AbstractRule
     {

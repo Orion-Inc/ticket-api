@@ -2,19 +2,19 @@
     "settings": {
         "displayErrorDetails": true,
         "logger": {
-            "name": "Ticket",
+            "name": "oTikets",
             "level": "Monolog\\ Logger::DEBUG",
             "path": "__DIR__ . '/../logs/app.log'"
         },
         "db": {
             "driver": "mysql",
             "host": "localhost",
-            "database": "tickets",
+            "database": "otikets",
             "username": "faridibin",
             "password": "hamzazara",
             "charset": "utf8",
             "collation": "utf8_unicode_ci",
-            "prefix": "tkt_"
+            "prefix": "otkt_"
         },
         "jwt": {
             "secret": "SoIwalkintotheclublikeeverybodyhates_me7204966443"
@@ -34,7 +34,7 @@
         }
     },
     "app": {
-        "name": "Ticket",
+        "name": "oTikets",
         "url": "",
         "api-version": "v1"
     },

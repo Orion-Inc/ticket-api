@@ -1,9 +1,9 @@
 <?php
-    namespace Ticket\Classes\Events;
+    namespace oTikets\Classes\Events;
 
-    use Ticket\Classes\App;
+    use oTikets\Classes\App;
 
-    use Ticket\Models\Event;
+    use oTikets\Models\Event;
 
     class Events extends App
     {

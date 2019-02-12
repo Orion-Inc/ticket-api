@@ -1,9 +1,9 @@
 <?php
-    namespace Ticket\Classes\Users;
+    namespace oTikets\Classes\Users;
 
-    use Ticket\Classes\App;
+    use oTikets\Classes\App;
 
-    use Ticket\Models\Organizer;
+    use oTikets\Models\Organizer;
 
     class Organizers extends App
     {

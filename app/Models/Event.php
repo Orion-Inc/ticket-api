@@ -1,8 +1,8 @@
 <?php
-    namespace Ticket\Models;
+    namespace oTikets\Models;
 
     use Illuminate\Database\Eloquent\Model;
-    use Ticket\Helpers\Helpers;
+    use oTikets\Helpers\Helpers;
 
     class Event extends Model
     {

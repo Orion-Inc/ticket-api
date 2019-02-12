@@ -1,5 +1,5 @@
 <?php
-    namespace Ticket\Classes;
+    namespace oTikets\Classes;
     use Monolog;
 
     define('ROOT', __DIR__.'/../../config/');

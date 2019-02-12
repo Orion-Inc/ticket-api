@@ -5,7 +5,7 @@
     use \Psr\Http\Message\ResponseInterface as Response;
 
     use Respect\Validation\Validator as v;
-    use Ticket\Classes\Config as get;
+    use oTikets\Classes\Config as get;
 
     use Tuupola\Middleware\HttpBasicAuthentication;
     
@@ -61,11 +61,11 @@
     };
 
     $container['mailer'] = function ($container) use ($mailer){
-        return new \Ticket\Classes\Mail\Mailer($container, $mailer);
+        return new \oTikets\Classes\Mail\Mailer($container, $mailer);
     };
 
     $container['validator'] = function ($container){
-        return new \Ticket\Classes\Validation\Validator;
+        return new \oTikets\Classes\Validation\Validator;
     };
 
     $container["jwt"] = function ($container) {
@@ -89,54 +89,54 @@
     };
 
     $container['help_me'] = function ($container){
-        return new \Ticket\Helpers\Helpers;
+        return new \oTikets\Helpers\Helpers;
     };
     
     $container['config'] = function ($container){
-        return new \Ticket\Classes\Config($container);
+        return new \oTikets\Classes\Config($container);
     };
 
     $container['api_response'] = function ($container){
-        return new \Ticket\Classes\Responses\Responses($container);
+        return new \oTikets\Classes\Responses\Responses($container);
     };
 
     $container['auth'] = function ($container){
-        return new \Ticket\Classes\Auth\Authentication($container);
+        return new \oTikets\Classes\Auth\Authentication($container);
     };
 
     $container['user'] = function ($container){
-        return new \Ticket\Classes\Users\Users($container);
+        return new \oTikets\Classes\Users\Users($container);
     };
 
     $container['organizer'] = function ($container){
-        return new \Ticket\Classes\Users\Organizers($container);
+        return new \oTikets\Classes\Users\Organizers($container);
     };
 
     $container['event'] = function ($container){
-        return new \Ticket\Classes\Events\Events($container);
+        return new \oTikets\Classes\Events\Events($container);
     };
 
     $container['VersionController'] = function ($container){
-        return new \Ticket\Controllers\v1\VersionController($container);
+        return new \oTikets\Controllers\v1\VersionController($container);
     };
 
     $container['AuthController'] = function ($container){
-        return new \Ticket\Controllers\v1\AuthController($container);
+        return new \oTikets\Controllers\v1\AuthController($container);
     };
 
     $container['UsersController'] = function ($container){
-        return new \Ticket\Controllers\v1\UsersController($container);
+        return new \oTikets\Controllers\v1\UsersController($container);
     };
 
     $container['OrganizerController'] = function ($container){
-        return new \Ticket\Controllers\v1\OrganizerController($container);
+        return new \oTikets\Controllers\v1\OrganizerController($container);
     };
 
     $container['EventsController'] = function ($container){
-        return new \Ticket\Controllers\v1\EventsController($container);
+        return new \oTikets\Controllers\v1\EventsController($container);
     };
 
-    v::with('Ticket\\Classes\\Validation\\Rules\\');
+    v::with('oTikets\\Classes\\Validation\\Rules\\');
 
     // $app->add(new \Slim\Middleware\JwtAuthentication([
     //     "path" => "/api/{$v}",

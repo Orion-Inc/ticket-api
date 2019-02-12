@@ -1,5 +1,5 @@
 <?php
-    namespace Ticket\Controllers;
+    namespace oTikets\Controllers;
 
     class Controller
     {

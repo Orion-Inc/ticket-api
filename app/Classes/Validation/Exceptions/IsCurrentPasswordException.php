@@ -1,5 +1,5 @@
 <?php
-    namespace Ticket\Classes\Validation\Exceptions;
+    namespace oTikets\Classes\Validation\Exceptions;
 
     use Respect\Validation\Exceptions\ValidationException;
 
