@@ -22,6 +22,10 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
     );
 
     public static $prefixLengthsPsr4 = array (
+        'o' => 
+        array (
+            'oTikets\\' => 8,
+        ),
         'i' => 
         array (
             'infobip\\api\\model\\sms\\mt\\send\\textual\\' => 38,
@@ -64,7 +68,6 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
             'Tuupola\\Middleware\\' => 19,
             'Tuupola\\Http\\Factory\\' => 21,
             'Tuupola\\' => 8,
-            'Ticket\\' => 7,
         ),
         'S' => 
         array (
@@ -145,6 +148,10 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
     );
 
     public static $prefixDirsPsr4 = array (
+        'oTikets\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
+        ),
         'infobip\\api\\model\\sms\\mt\\send\\textual\\' => 
         array (
             0 => __DIR__ . '/..' . '/infobip/infobip-api-php-client/infobip/api/model/sms/mt/send/textual',
@@ -270,10 +277,6 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'Tuupola\\' => 
         array (
             0 => __DIR__ . '/..' . '/tuupola/base62/src',
-        ),
-        'Ticket\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app',
         ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
@@ -2286,25 +2289,6 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'Symfony\\Component\\Translation\\Writer\\TranslationWriterInterface' => __DIR__ . '/..' . '/symfony/translation/Writer/TranslationWriterInterface.php',
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
-        'Ticket\\Classes\\App' => __DIR__ . '/../..' . '/app/Classes/App.php',
-        'Ticket\\Classes\\Auth\\Authentication' => __DIR__ . '/../..' . '/app/Classes/Auth/Authentication.php',
-        'Ticket\\Classes\\Config' => __DIR__ . '/../..' . '/app/Classes/Config.php',
-        'Ticket\\Classes\\Responses\\Responses' => __DIR__ . '/../..' . '/app/Classes/Responses/Responses.php',
-        'Ticket\\Classes\\User\\User' => __DIR__ . '/../..' . '/app/Classes/User/User.php',
-        'Ticket\\Classes\\Validation\\Exceptions\\EmailAvailableException' => __DIR__ . '/../..' . '/app/Classes/Validation/Exceptions/EmailAvailableException.php',
-        'Ticket\\Classes\\Validation\\Exceptions\\IsCurrentPasswordException' => __DIR__ . '/../..' . '/app/Classes/Validation/Exceptions/IsCurrentPasswordException.php',
-        'Ticket\\Classes\\Validation\\Exceptions\\PhoneAvailableException' => __DIR__ . '/../..' . '/app/Classes/Validation/Exceptions/PhoneAvailableException.php',
-        'Ticket\\Classes\\Validation\\Rules\\EmailAvailable' => __DIR__ . '/../..' . '/app/Classes/Validation/Rules/EmailAvailable.php',
-        'Ticket\\Classes\\Validation\\Rules\\IsCurrentPassword' => __DIR__ . '/../..' . '/app/Classes/Validation/Rules/IsCurrentPassword.php',
-        'Ticket\\Classes\\Validation\\Rules\\PhoneAvailable' => __DIR__ . '/../..' . '/app/Classes/Validation/Rules/PhoneAvailable.php',
-        'Ticket\\Classes\\Validation\\Validator' => __DIR__ . '/../..' . '/app/Classes/Validation/Validator.php',
-        'Ticket\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Contoller.php',
-        'Ticket\\Controllers\\v1\\AuthController' => __DIR__ . '/../..' . '/app/Controllers/v1/AuthController.php',
-        'Ticket\\Controllers\\v1\\UsersController' => __DIR__ . '/../..' . '/app/Controllers/v1/UsersController.php',
-        'Ticket\\Controllers\\v1\\VersionController' => __DIR__ . '/../..' . '/app/Controllers/v1/VersionController.php',
-        'Ticket\\Helpers\\Helpers' => __DIR__ . '/../..' . '/app/Helpers/Helpers.php',
-        'Ticket\\Models\\ResetPasswords' => __DIR__ . '/../..' . '/app/Models/ResetPasswords.php',
-        'Ticket\\Models\\Users' => __DIR__ . '/../..' . '/app/Models/Users.php',
         'Tuupola\\Base62' => __DIR__ . '/..' . '/tuupola/base62/src/Base62.php',
         'Tuupola\\Base62Proxy' => __DIR__ . '/..' . '/tuupola/base62/src/Base62Proxy.php',
         'Tuupola\\Base62\\BaseEncoder' => __DIR__ . '/..' . '/tuupola/base62/src/Base62/BaseEncoder.php',
@@ -2875,6 +2859,32 @@ class ComposerStaticInit04965044d8c7235280b204977194a52c
         'infobip\\api\\model\\sms\\mt\\send\\textual\\SMSAdvancedTextualRequest' => __DIR__ . '/..' . '/infobip/infobip-api-php-client/infobip/api/model/sms/mt/send/textual/SMSAdvancedTextualRequest.php',
         'infobip\\api\\model\\sms\\mt\\send\\textual\\SMSMultiTextualRequest' => __DIR__ . '/..' . '/infobip/infobip-api-php-client/infobip/api/model/sms/mt/send/textual/SMSMultiTextualRequest.php',
         'infobip\\api\\model\\sms\\mt\\send\\textual\\SMSTextualRequest' => __DIR__ . '/..' . '/infobip/infobip-api-php-client/infobip/api/model/sms/mt/send/textual/SMSTextualRequest.php',
+        'oTikets\\Classes\\App' => __DIR__ . '/../..' . '/app/Classes/App.php',
+        'oTikets\\Classes\\Auth\\Authentication' => __DIR__ . '/../..' . '/app/Classes/Auth/Authentication.php',
+        'oTikets\\Classes\\Config' => __DIR__ . '/../..' . '/app/Classes/Config.php',
+        'oTikets\\Classes\\Events\\Events' => __DIR__ . '/../..' . '/app/Classes/Events/Events.php',
+        'oTikets\\Classes\\Mail\\Mailer' => __DIR__ . '/../..' . '/app/Classes/Mail/Mailer.php',
+        'oTikets\\Classes\\Responses\\Responses' => __DIR__ . '/../..' . '/app/Classes/Responses/Responses.php',
+        'oTikets\\Classes\\Users\\Organizers' => __DIR__ . '/../..' . '/app/Classes/Users/Organizers.php',
+        'oTikets\\Classes\\Users\\Users' => __DIR__ . '/../..' . '/app/Classes/Users/Users.php',
+        'oTikets\\Classes\\Validation\\Exceptions\\EmailAvailableException' => __DIR__ . '/../..' . '/app/Classes/Validation/Exceptions/EmailAvailableException.php',
+        'oTikets\\Classes\\Validation\\Exceptions\\IsCurrentPasswordException' => __DIR__ . '/../..' . '/app/Classes/Validation/Exceptions/IsCurrentPasswordException.php',
+        'oTikets\\Classes\\Validation\\Exceptions\\PhoneAvailableException' => __DIR__ . '/../..' . '/app/Classes/Validation/Exceptions/PhoneAvailableException.php',
+        'oTikets\\Classes\\Validation\\Rules\\EmailAvailable' => __DIR__ . '/../..' . '/app/Classes/Validation/Rules/EmailAvailable.php',
+        'oTikets\\Classes\\Validation\\Rules\\IsCurrentPassword' => __DIR__ . '/../..' . '/app/Classes/Validation/Rules/IsCurrentPassword.php',
+        'oTikets\\Classes\\Validation\\Rules\\PhoneAvailable' => __DIR__ . '/../..' . '/app/Classes/Validation/Rules/PhoneAvailable.php',
+        'oTikets\\Classes\\Validation\\Validator' => __DIR__ . '/../..' . '/app/Classes/Validation/Validator.php',
+        'oTikets\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Contoller.php',
+        'oTikets\\Controllers\\v1\\AuthController' => __DIR__ . '/../..' . '/app/Controllers/v1/AuthController.php',
+        'oTikets\\Controllers\\v1\\EventsController' => __DIR__ . '/../..' . '/app/Controllers/v1/EventsController.php',
+        'oTikets\\Controllers\\v1\\OrganizerController' => __DIR__ . '/../..' . '/app/Controllers/v1/OrganizerController.php',
+        'oTikets\\Controllers\\v1\\UsersController' => __DIR__ . '/../..' . '/app/Controllers/v1/UsersController.php',
+        'oTikets\\Controllers\\v1\\VersionController' => __DIR__ . '/../..' . '/app/Controllers/v1/VersionController.php',
+        'oTikets\\Helpers\\Helpers' => __DIR__ . '/../..' . '/app/Helpers/Helpers.php',
+        'oTikets\\Models\\Event' => __DIR__ . '/../..' . '/app/Models/Event.php',
+        'oTikets\\Models\\Organizer' => __DIR__ . '/../..' . '/app/Models/Organizer.php',
+        'oTikets\\Models\\ResetPasswords' => __DIR__ . '/../..' . '/app/Models/ResetPasswords.php',
+        'oTikets\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

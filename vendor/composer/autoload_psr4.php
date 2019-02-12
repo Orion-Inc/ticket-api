@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'oTikets\\' => array($baseDir . '/app'),
     'infobip\\api\\model\\sms\\mt\\send\\textual\\' => array($vendorDir . '/infobip/infobip-api-php-client/infobip/api/model/sms/mt/send/textual'),
     'infobip\\api\\model\\sms\\mt\\send\\preview\\' => array($vendorDir . '/infobip/infobip-api-php-client/infobip/api/model/sms/mt/send/preview'),
     'infobip\\api\\model\\sms\\mt\\send\\binary\\' => array($vendorDir . '/infobip/infobip-api-php-client/infobip/api/model/sms/mt/send/binary'),
@@ -37,7 +38,6 @@ return array(
     'Tuupola\\Middleware\\' => array($vendorDir . '/tuupola/branca-middleware/src', $vendorDir . '/tuupola/cors-middleware/src'),
     'Tuupola\\Http\\Factory\\' => array($vendorDir . '/tuupola/http-factory/src'),
     'Tuupola\\' => array($vendorDir . '/tuupola/base62/src'),
-    'Ticket\\' => array($baseDir . '/app'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
