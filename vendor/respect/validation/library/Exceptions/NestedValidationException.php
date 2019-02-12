@@ -228,7 +228,7 @@ class NestedValidationException extends ValidationException implements IteratorA
         $exceptions = $this->getIterator();
         foreach ($exceptions as $exception) {
             $messages[] = sprintf(
-                '%s- %s',
+                '%s%s',
                 str_repeat(' ', ($exceptions[$exception]['depth'] - $leveler) * 2),
                 $exception->getMessage()
             );

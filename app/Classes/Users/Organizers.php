@@ -56,7 +56,7 @@
                 'created_at',
                 'updated_at'
             )->where('id', $id)
-            ->get();
+            ->get()->first();
 
             return $organizer;
         }

@@ -35,6 +35,17 @@
             if ($validation->failed()) {
                 return $response->withJson($this->api_response->error($validation->getErrors()));
             }
+
+            $res = $this->organizer->create($request->getParams());
+
+            if ($res) {
+                return $response->withJson($this->api_response->success(
+                    ['organizer' => $this->organizer->get($res['id'])], 
+                    'Organzier created successfully.'
+                ));
+            }
+
+            return $response->withJson($this->api_response->error());
         }
 
         public function get_organizer($request, $response, $args)

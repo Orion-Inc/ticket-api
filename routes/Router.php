@@ -44,6 +44,7 @@
                 
                 $this->group('/{id}', function() {
                     $this->get('', 'EventsController:get_event')->setName('api.v1.event-get');
+                    $this->get('/tickets', 'EventsController:get_event_tickets')->setName('api.v1.event-get-tickets');
                     $this->post('/update', 'EventsController:update_event')->setName('api.v1.event-update');
                     $this->post('/delete', 'EventsController:delete_event')->setName('api.v1.event-delete');
                 });
