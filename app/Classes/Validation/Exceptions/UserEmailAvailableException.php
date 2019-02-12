@@ -4,7 +4,7 @@
 
     use Respect\Validation\Exceptions\ValidationException;
 
-    class EmailAvailableException extends ValidationException
+    class UserEmailAvailableException extends ValidationException
     {
         public static $defaultTemplates = [
             self::MODE_DEFAULT => [

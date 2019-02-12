@@ -177,4 +177,4 @@
     //     }
     // ]));
 
-    require __DIR__.'/../routes/Router.php';
+    require __DIR__.'/../routes/router.php';

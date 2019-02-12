@@ -6,7 +6,7 @@
 
     use oTikets\Models\User;
 
-    class EmailAvailable extends AbstractRule
+    class UserEmailAvailable extends AbstractRule
     {
         public function validate($input)
         {

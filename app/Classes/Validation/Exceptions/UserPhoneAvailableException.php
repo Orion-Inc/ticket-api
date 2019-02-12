@@ -4,7 +4,7 @@
 
     use Respect\Validation\Exceptions\ValidationException;
 
-    class PhoneAvailableException extends ValidationException
+    class UserPhoneAvailableException extends ValidationException
     {
         public static $defaultTemplates = [
             self::MODE_DEFAULT => [

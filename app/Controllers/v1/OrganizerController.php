@@ -20,7 +20,21 @@
 
         public function new_organizer($request, $response)
         {
-            
+            $validation = $this->validator->validate($request, [
+                'name' => v::notEmpty(),
+                'email' => v::notEmpty()->email()->organizerEmailAvailable(),
+                'phone' => v::notEmpty()->phone()->organizerPhoneAvailable(),
+                'address' => v::notEmpty(),
+                'city' => v::notEmpty(),
+                'country' => v::notEmpty(),
+                'location' => v::notEmpty(),
+                'website' => v::optional(v::oneOf(v::url(), v::domain())),
+                'description' => v::notEmpty(),
+            ]);
+
+            if ($validation->failed()) {
+                return $response->withJson($this->api_response->error($validation->getErrors()));
+            }
         }
 
         public function get_organizer($request, $response, $args)
@@ -36,10 +50,13 @@
 
         public function update_organizer($request, $response, $args)
         {
+            $organizer_email = $this->organizer->get($args['id'])['email'];
+            $organizer_phone = $this->organizer->get($args['id'])['phone'];
+
             $validation = $this->validator->validate($request, [
                 'name' => v::notEmpty(),
-                'email' => v::notEmpty()->email(),
-                'phone' => v::notEmpty()->phone(),
+                'email' => ($request->getParam('email') == $organizer_email) ? v::noWhitespace()->notEmpty()->email() : v::noWhitespace()->notEmpty()->email()->organizerEmailAvailable(),
+                'phone' => ($request->getParam('phone') == $organizer_phone) ? v::notEmpty()->phone() : v::notEmpty()->phone()->organizerPhoneAvailable(),
                 'address' => v::notEmpty(),
                 'city' => v::notEmpty(),
                 'country' => v::notEmpty(),

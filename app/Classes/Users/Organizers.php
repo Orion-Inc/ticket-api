@@ -63,13 +63,13 @@
 
         public function create($data)
         {
-            $event_data = $this->prep_organizer_data($data);
+            $organizer_data = $this->prep_organizer_data($data);
             
-            $event = Organizer::create($event_data);
+            $organizer = Organizer::create($organizer_data);
 
-            if ($event) {
+            if ($organizer) {
                 return [
-                    'id' => $event->id
+                    'id' => $organizer->id
                 ];
             }
         }

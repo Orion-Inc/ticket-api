@@ -21,11 +21,11 @@
         public function new_user($request, $response)
         {
             $validation = $this->validator->validate($request, [
-                'email' => v::noWhitespace()->notEmpty()->email()->emailAvailable(),
+                'email' => v::noWhitespace()->notEmpty()->email()->userEmailAvailable(),
                 'password' => v::notEmpty(),
                 'type' => v::notEmpty()->in(['administrator','organizer','customer']),
                 'full_name' => v::notEmpty()->alpha(),
-                'phone' => v::notEmpty()->phone()->phoneAvailable(),
+                'phone' => v::notEmpty()->phone()->userPhoneAvailable(),
                 'event_organizer' => v::optional(v::oneOf(
                     v::intVal(),
                     v::nullType()
@@ -65,11 +65,11 @@
             $user_phone = $this->user->get($args['id'])['phone'];
 
             $validation = $this->validator->validate($request, [
-                'email' => ($request->getParam('email') == $user_email) ? v::noWhitespace()->notEmpty()->email() : v::noWhitespace()->notEmpty()->email()->emailAvailable(),
+                'email' => ($request->getParam('email') == $user_email) ? v::noWhitespace()->notEmpty()->email() : v::noWhitespace()->notEmpty()->email()->userEmailAvailable(),
                 'password' => v::notEmpty(),
                 'type' => v::notEmpty()->in(['administrator','organizer','customer']),
                 'full_name' => v::notEmpty()->alpha(),
-                'phone' => ($request->getParam('phone') == $user_phone) ? v::notEmpty()->phone() : v::notEmpty()->phone()->phoneAvailable(),
+                'phone' => ($request->getParam('phone') == $user_phone) ? v::notEmpty()->phone() : v::notEmpty()->phone()->userPhoneAvailable(),
                 'event_organizer' => v::optional(v::oneOf(
                     v::intVal(),
                     v::nullType()
