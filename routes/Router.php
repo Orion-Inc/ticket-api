@@ -48,7 +48,7 @@
                     $this->post('/delete', 'EventsController:delete_event')->setName('api.v1.event-delete');
 
                     $this->group('/tickets/{ticket_id}', function() {
-                        $this->get('', 'EventsController:get_event_tickets')->setName('api.v1.event-get-tickets');
+                        $this->get('', 'EventsController:get_event_ticket')->setName('api.v1.event-get-ticket');
                         // $this->post('/update', 'OrganizerController:update_organizer')->setName('api.v1.organizer-update');
                         // $this->post('/delete', 'OrganizerController:delete_organizer')->setName('api.v1.organizer-delete');
                     });

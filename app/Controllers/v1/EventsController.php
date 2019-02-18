@@ -120,7 +120,18 @@
                 return $response->withJson($this->api_response->success(['tickets' => $tickets], []));
             }
 
-            //return $response->withJson($this->api_response->error());
+            return $response->withJson($this->api_response->error());
+        }
+
+        public function get_event_ticket($request, $response, $args)
+        {
+            $ticket = $this->event->get_ticket($args['event_id'], $args['ticket_id']);
+
+            if ($ticket) {
+                return $response->withJson($this->api_response->success(['ticket' => $ticket], []));
+            }
+
+            return $response->withJson($this->api_response->error());
         }
     }
     

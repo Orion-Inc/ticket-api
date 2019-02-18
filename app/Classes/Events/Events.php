@@ -139,5 +139,12 @@
             
             return $tickets;
         }
+
+        public function get_ticket($event, $ticket)
+        {
+            $tickets = Event::find($event)->tickets()->where('id', $ticket)->first();
+            
+            return $tickets;
+        }
     }
     
