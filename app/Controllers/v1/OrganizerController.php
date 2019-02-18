@@ -50,7 +50,7 @@
 
         public function get_organizer($request, $response, $args)
         {
-            $organizer = $this->organizer->get($args['id']);
+            $organizer = $this->organizer->get($args[organizer_id']);
 
             if ($organizer) {
                 return $response->withJson($this->api_response->success(['organizer' => $organizer], []));
@@ -61,8 +61,8 @@
 
         public function update_organizer($request, $response, $args)
         {
-            $organizer_email = $this->organizer->get($args['id'])['email'];
-            $organizer_phone = $this->organizer->get($args['id'])['phone'];
+            $organizer_email = $this->organizer->get($args[organizer_id'])['email'];
+            $organizer_phone = $this->organizer->get($args[organizer_id'])['phone'];
 
             $validation = $this->validator->validate($request, [
                 'name' => v::notEmpty(),
@@ -80,7 +80,7 @@
                 return $response->withJson($this->api_response->error($validation->getErrors()));
             }
 
-            $organizer = $this->organizer->update($args['id'], $request->getParams());
+            $organizer = $this->organizer->update($args[organizer_id'], $request->getParams());
 
             if ($organizer) {
                 return $response->withJson($this->api_response->success(
@@ -94,7 +94,7 @@
 
         public function delete_organizer($request, $response, $args)
         {
-            $organizer = $this->organizer->delete($args['id']);
+            $organizer = $this->organizer->delete($args[organizer_id']);
 
             if ($organizer) {
                 return $response->withJson($this->api_response->success([], 'Organizer deleted successfully'));

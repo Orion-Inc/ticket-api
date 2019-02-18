@@ -50,7 +50,7 @@
 
         public function get_user($request, $response, $args)
         {
-            $user = $this->user->get($args['id']);
+            $user = $this->user->get($args['user_id']);
 
             if ($user) {
                 return $response->withJson($this->api_response->success(['user' => $user], []));
@@ -61,8 +61,8 @@
 
         public function update_user($request, $response, $args)
         {
-            $user_email = $this->user->get($args['id'])['email'];
-            $user_phone = $this->user->get($args['id'])['phone'];
+            $user_email = $this->user->get($args['user_id'])['email'];
+            $user_phone = $this->user->get($args['user_id'])['phone'];
 
             $validation = $this->validator->validate($request, [
                 'email' => ($request->getParam('email') == $user_email) ? v::noWhitespace()->notEmpty()->email() : v::noWhitespace()->notEmpty()->email()->userEmailAvailable(),
@@ -80,7 +80,7 @@
                 return $response->withJson($this->api_response->error($validation->getErrors()));
             }
 
-            $user = $this->user->update($args['id'], $request->getParams());
+            $user = $this->user->update($args['user_id'], $request->getParams());
 
             if ($user) {
                 return $response->withJson($this->api_response->success(
@@ -94,7 +94,7 @@
         
         public function delete_user($request, $response, $args)
         {
-            $user = $this->user->delete($args['id']);
+            $user = $this->user->delete($args['user_id']);
 
             if ($user) {
                 return $response->withJson($this->api_response->success([], 'User deleted successfully'));
@@ -105,7 +105,7 @@
 
         public function user_history($request, $response, $args)
         {
-            $history = $this->user->history($args['id']);
+            $history = $this->user->history($args['user_id']);
 
             if ($history) {
                 return $response->withJson($this->api_response->success(['history' => $history], []));

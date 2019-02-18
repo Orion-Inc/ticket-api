@@ -17,7 +17,7 @@
                 $this->post('/new', 'UsersController:new_user')->setName('api.v1.user-new');
                 
                 
-                $this->group('/{id}', function() {
+                $this->group('/{user_id}', function() {
                     $this->get('', 'UsersController:get_user')->setName('api.v1.user-get');
                     $this->get('/history', 'UsersController:user_history')->setName('api.v1.user-history');
 
@@ -30,7 +30,7 @@
                 $this->get('/all', 'OrganizerController:all_organizers')->setName('api.v1.organizer-getAll');
                 $this->post('/new', 'OrganizerController:new_organizer')->setName('api.v1.organizer-new');
 
-                $this->group('/{id}', function() {
+                $this->group('/{organizer_id}', function() {
                     $this->get('', 'OrganizerController:get_organizer')->setName('api.v1.organizer-get');
                     $this->post('/update', 'OrganizerController:update_organizer')->setName('api.v1.organizer-update');
                     $this->post('/delete', 'OrganizerController:delete_organizer')->setName('api.v1.organizer-delete');
@@ -42,11 +42,16 @@
                 $this->post('/create', 'EventsController:new_event')->setName('api.v1.event-new');
     
                 
-                $this->group('/{id}', function() {
+                $this->group('/{event_id}', function() {
                     $this->get('', 'EventsController:get_event')->setName('api.v1.event-get');
-                    $this->get('/tickets', 'EventsController:get_event_tickets')->setName('api.v1.event-get-tickets');
                     $this->post('/update', 'EventsController:update_event')->setName('api.v1.event-update');
                     $this->post('/delete', 'EventsController:delete_event')->setName('api.v1.event-delete');
+
+                    $this->group('/tickets/{ticket_id}', function() {
+                        $this->get('', 'EventsController:get_event_tickets')->setName('api.v1.event-get-tickets');
+                        // $this->post('/update', 'OrganizerController:update_organizer')->setName('api.v1.organizer-update');
+                        // $this->post('/delete', 'OrganizerController:delete_organizer')->setName('api.v1.organizer-delete');
+                    });
                 });
             });
 

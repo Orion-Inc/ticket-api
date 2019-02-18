@@ -133,5 +133,11 @@
             return $result;
         }
 
+        public function get_tickets($param)
+        {
+            $tickets = Event::find($param)->tickets;
+            
+            return $tickets;
+        }
     }
     

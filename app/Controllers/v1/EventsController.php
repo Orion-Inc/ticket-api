@@ -56,7 +56,7 @@
 
         public function get_event($request, $response, $args)
         {
-            $event = $this->event->get($args['id']);
+            $event = $this->event->get($args['event_id']);
 
             if ($event) {
                 return $response->withJson($this->api_response->success(['event' => $event], []));
@@ -89,7 +89,7 @@
                 return $response->withJson($this->api_response->error($validation->getErrors()));
             }
 
-            $event = $this->event->update($args['id'], $request->getParams());
+            $event = $this->event->update($args['event_id'], $request->getParams());
 
             if ($event) {
                 return $response->withJson($this->api_response->success(
@@ -103,13 +103,24 @@
 
         public function delete_event($request, $response, $args)
         {
-            $event = $this->event->delete($args['id']);
+            $event = $this->event->delete($args['event_id']);
 
             if ($event) {
                 return $response->withJson($this->api_response->success([], 'Event deleted successfully'));
             }
 
             return $response->withJson($this->api_response->error());
+        }
+
+        public function get_event_tickets($request, $response, $args)
+        {
+            $tickets = $this->event->get_tickets($args['event_id']);
+
+            if ($tickets) {
+                return $response->withJson($this->api_response->success(['tickets' => $tickets], []));
+            }
+
+            //return $response->withJson($this->api_response->error());
         }
     }
     

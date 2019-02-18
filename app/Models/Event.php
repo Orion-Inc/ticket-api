@@ -45,5 +45,10 @@
 
             return $url_key;
         }
+
+        public function tickets()
+        {
+            return $this->hasMany('oTikets\Models\EventTickets');
+        }
     }
     
