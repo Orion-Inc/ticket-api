@@ -3,14 +3,14 @@
 
     use oTikets\Classes\App;
 
-    use oTikets\Models\Users;
+    use oTikets\Models\User;
     use oTikets\Models\ResetPasswords;
 
     class Authentication extends App
     {
         public function authenticate(array $credentials)
         {
-            $user = Users::where('email', $credentials['email'])->first();
+            $user = User::where('email', $credentials['email'])->first();
 
             if ($user) {
                 if ($user->activate) {
@@ -37,13 +37,13 @@
                 $token = $jwt->getClaim('token');
 
                 if ($credentials['email'] == $email) {
-                    $user_id = Users::where([
+                    $user_id = User::where([
                         ['email', $email],
                         ['token', $token]
                     ])->value('id');
     
                     if ($user_id) {
-                        $activate = Users::where('id', $user_id)->update([
+                        $activate = User::where('id', $user_id)->update([
                             'activate' => 1,
                             'token' => NULL
                         ]);
@@ -96,7 +96,7 @@
 
                 if ($reset_id) {
                     $new_password = $this->help_me->hash($credentials['new_password']);
-                    $password_changed = Users::where('email', $email)->update(['password' => $new_password]);
+                    $password_changed = User::where('email', $email)->update(['password' => $new_password]);
 
                     if ($password_changed) {
                         //Send Email

@@ -47,10 +47,13 @@
                     $this->post('/update', 'EventsController:update_event')->setName('api.v1.event-update');
                     $this->post('/delete', 'EventsController:delete_event')->setName('api.v1.event-delete');
 
-                    $this->group('/tickets/{ticket_id}', function() {
-                        $this->get('', 'EventsController:get_event_ticket')->setName('api.v1.event-get-ticket');
-                        // $this->post('/update', 'OrganizerController:update_organizer')->setName('api.v1.organizer-update');
-                        // $this->post('/delete', 'OrganizerController:delete_organizer')->setName('api.v1.organizer-delete');
+
+                    $this->group('/tickets', function() {
+                        $this->get('', 'EventsController:get_event_tickets')->setName('api.v1.event-get-tickets');
+                        $this->get('/{ticket_id}', 'EventsController:get_event_ticket')->setName('api.v1.event-get-ticket');
+                        $this->post('/create', 'OrganizerController:create_event_ticket')->setName('api.v1.event-ticket-update');
+                        $this->post('/update', 'OrganizerController:update_event_ticket')->setName('api.v1.event-ticket-update');
+                        $this->post('/delete', 'OrganizerController:delete_event_ticket')->setName('api.v1.event-ticket-delete');
                     });
                 });
             });
@@ -63,4 +66,37 @@
                 
             });
         });
-    });
+    })->add(new \Slim\Middleware\JwtAuthentication([
+        "path" => "/api/{$v}",
+        "logger" => $container['logger'],
+        "header" => "X-Access-Token",
+        "secret" => $container['jwt_secret'],
+        "rules" => [
+            new \Slim\Middleware\JwtAuthentication\RequestPathRule([
+                "path" => "/api/{$v}",
+                "passthrough" => [
+                    "/api/{$v}/version",
+                    "/api/{$v}/auth/authenticate",
+                    "/api/{$v}/auth/sign-up",
+                    "/api/{$v}/auth/activate/",
+                    "/api/{$v}/auth/forgot-password",
+                    "/api/{$v}/auth/reset-password",
+                ]
+            ]),
+            new \Slim\Middleware\JwtAuthentication\RequestMethodRule([
+                "passthrough" => ["OPTIONS"]
+            ]),
+        ],
+        "callback" => function ($request, $response, $arguments) use ($container) {
+            $container["jwt"] = $arguments["decoded"];
+        },
+        "error" => function ($request, $response, $arguments) {
+            $data["status"] = "error";
+            $data["code"] = 401;
+            $data["message"] = $arguments["message"];
+            
+            return $response
+                ->withHeader("Content-Type", "application/json")
+                ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+        }
+    ]));

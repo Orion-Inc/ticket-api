@@ -12,6 +12,5 @@ return array(
     'RandomLib' => array($vendorDir . '/ircmaxell/random-lib/lib'),
     'Pimple' => array($vendorDir . '/pimple/pimple/src'),
     'Mailgun' => array($vendorDir . '/mailgun/mailgun-php/src'),
-    'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib'),
     '' => array($vendorDir . '/netresearch/jsonmapper/src'),
 );

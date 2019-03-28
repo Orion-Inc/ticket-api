@@ -9,8 +9,7 @@
         public function hash($raw_text)
         {
             $hashed_text = password_hash($raw_text, PASSWORD_BCRYPT,[
-                'cost' => 11,
-                'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
+                'cost' => 11
             ]);
 
             return $hashed_text;

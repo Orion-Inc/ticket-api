@@ -59,7 +59,7 @@
                 'country',
                 'is_private',
                 'is_protected',
-                'organizer',
+                'organizer_id',
                 'created_at', 
                 'updated_at'
             )->get();
@@ -89,7 +89,7 @@
                 'country',
                 'is_private',
                 'is_protected',
-                'organizer',
+                'organizer_id',
                 'created_at', 
                 'updated_at'
             )->where('id', $param)
